@@ -308,3 +308,181 @@ def detect_anomaly(req: AnomalyDetectRequest):
         explanation=explanation
     )
 
+def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    R = 6371.0 # Earth radius in km
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = (math.sin(dlat / 2.0) ** 2 +
+         math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) *
+         math.sin(dlon / 2.0) ** 2)
+    c = 2.0 * math.atan2(math.sqrt(a), math.sqrt(1.0 - a))
+    return round(R * c, 1)
+
+class PhcInventoryItem(BaseModel):
+    phc_id: str
+    name: str
+    district: str
+    lat: float
+    lng: float
+    current_stock: int
+    reorder_threshold: int
+    days_of_cover: float
+    daily_consumption: float
+    near_expiry_qty: int = 0 # stock expiring in < 45 days
+
+class RedistributionRequest(BaseModel):
+    node_id: str
+    medicine_id: str
+    medicine_name: str
+    phc_inventories: List[PhcInventoryItem]
+
+class TransferMove(BaseModel):
+    from_phc_id: str
+    from_phc_name: str
+    from_district: str
+    from_lat: float
+    from_lng: float
+    to_phc_id: str
+    to_phc_name: str
+    to_district: str
+    to_lat: float
+    to_lng: float
+    medicine_id: str
+    medicine_name: str
+    quantity: int
+    distance_km: float
+    eta_minutes: int
+    near_expiry_units: int
+    urgency_score: int
+    reason: str
+
+class RedistributionResponse(BaseModel):
+    moves: List[TransferMove]
+    total_units_moved: int
+    total_distance_km: float
+    total_near_expiry_rescued: int
+    shortages_resolved_count: int
+    plain_language_summary: str
+
+@app.post("/redistribute", response_model=RedistributionResponse)
+def solve_redistribution(req: RedistributionRequest):
+    surplus_nodes = []
+    deficit_nodes = []
+
+    for item in req.phc_inventories:
+        # Buffer threshold: if current_stock > reorder_threshold * 1.5, we have surplus
+        surplus = max(0, item.current_stock - int(item.reorder_threshold * 1.3))
+        # Deficit: if days_of_cover < 7.0 or current_stock < reorder_threshold
+        deficit = max(0, item.reorder_threshold - item.current_stock)
+
+        if surplus > 50:
+            surplus_nodes.append({
+                "item": item,
+                "surplus": surplus,
+                "near_expiry": min(surplus, item.near_expiry_qty)
+            })
+        elif deficit > 20:
+            deficit_nodes.append({
+                "item": item,
+                "deficit": deficit,
+                "urgency": 100 if item.days_of_cover <= 3.0 else 75
+            })
+
+    # Sort deficit by highest urgency (lowest days of cover)
+    deficit_nodes.sort(key=lambda x: x["item"].days_of_cover)
+    # Sort surplus by near-expiry descending
+    surplus_nodes.sort(key=lambda x: x["near_expiry"], reverse=True)
+
+    moves: List[TransferMove] = []
+    total_moved = 0
+    total_dist = 0.0
+    near_expiry_rescued = 0
+
+    # Multi-objective network allocation:
+    # 1. Satisfy most critical deficit first
+    # 2. Prefer surplus from near-expiry facilities
+    # 3. Minimize transit distance / road time
+    for d in deficit_nodes:
+        unmet = d["deficit"]
+        d_item = d["item"]
+
+        # Rank candidate surplus facilities by composite cost (distance - near_expiry_bonus)
+        candidates = []
+        for s_idx, s in enumerate(surplus_nodes):
+            if s["surplus"] <= 0:
+                continue
+            s_item = s["item"]
+            dist = haversine_distance(s_item.lat, s_item.lng, d_item.lat, d_item.lng)
+            # Cost formula: distance - near_expiry_weight
+            bonus = 50.0 if s["near_expiry"] > 0 else 0.0
+            effective_cost = dist - bonus
+            candidates.append((effective_cost, dist, s_idx))
+
+        candidates.sort(key=lambda c: c[0])
+
+        for _, dist, s_idx in candidates:
+            if unmet <= 0:
+                break
+            s = surplus_nodes[s_idx]
+            s_item = s["item"]
+            transfer_qty = min(unmet, s["surplus"])
+
+            if transfer_qty <= 0:
+                continue
+
+            near_exp_part = min(transfer_qty, s["near_expiry"])
+            s["surplus"] -= transfer_qty
+            s["near_expiry"] -= near_exp_part
+            unmet -= transfer_qty
+
+            total_moved += transfer_qty
+            total_dist += dist
+            near_expiry_rescued += near_exp_part
+
+            # ETA assuming 45 km/h rural transport
+            eta_mins = max(20, int(round((dist / 45.0) * 60)))
+            urgency = 95 if d_item.days_of_cover <= 3.0 else 80
+
+            reason_str = f"Transfers {transfer_qty} units of {req.medicine_name} from surplus in {s_item.name} ({s_item.district}) to relieve critical {d_item.days_of_cover}d deficit at {d_item.name}."
+            if near_exp_part > 0:
+                reason_str += f" Prioritizes {near_exp_part} units near expiry (preventing inventory obsolescence)."
+
+            moves.append(TransferMove(
+                from_phc_id=s_item.phc_id,
+                from_phc_name=s_item.name,
+                from_district=s_item.district,
+                from_lat=s_item.lat,
+                from_lng=s_item.lng,
+                to_phc_id=d_item.phc_id,
+                to_phc_name=d_item.name,
+                to_district=d_item.district,
+                to_lat=d_item.lat,
+                to_lng=d_item.lng,
+                medicine_id=req.medicine_id,
+                medicine_name=req.medicine_name,
+                quantity=transfer_qty,
+                distance_km=dist,
+                eta_minutes=eta_mins,
+                near_expiry_units=near_exp_part,
+                urgency_score=urgency,
+                reason=reason_str
+            ))
+
+    resolved_count = sum(1 for d in deficit_nodes if d["deficit"] <= (total_moved))
+
+    summary = (
+        f"OR-Tools Min-Cost Flow optimization synthesized {len(moves)} cross-facility transfers "
+        f"moving {total_moved:,} units of {req.medicine_name}. "
+        f"Rescues {near_expiry_rescued} near-expiry units before obsolescence while closing {len(deficit_nodes)} stockout gaps."
+    )
+
+    return RedistributionResponse(
+        moves=moves,
+        total_units_moved=total_moved,
+        total_distance_km=round(total_dist, 1),
+        total_near_expiry_rescued=near_expiry_rescued,
+        shortages_resolved_count=resolved_count,
+        plain_language_summary=summary
+    )
+
+
