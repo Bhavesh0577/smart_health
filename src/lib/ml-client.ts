@@ -155,3 +155,126 @@ export async function requestForecast(payload: ForecastRequestPayload): Promise<
 
   return localParametricForecast(payload);
 }
+
+export interface AnomalyDetectPayload {
+  series_name: string;
+  values: number[];
+  ewma_alpha?: number;
+  cusum_k?: number;
+  cusum_h?: number;
+}
+
+export interface AnomalyDetectResult {
+  is_anomaly: boolean;
+  severity: "critical" | "warning" | "info";
+  algorithm_triggered: string[];
+  ewma_zscore: number;
+  cusum_statistic: number;
+  baseline_mean: number;
+  recent_mean: number;
+  percentage_deviation: number;
+  explanation: string;
+}
+
+function localAnomalyDetect(payload: AnomalyDetectPayload): AnomalyDetectResult {
+  const vals = payload.values;
+  if (!vals || vals.length < 7) {
+    return {
+      is_anomaly: false,
+      severity: "info",
+      algorithm_triggered: [],
+      ewma_zscore: 0,
+      cusum_statistic: 0,
+      baseline_mean: 0,
+      recent_mean: 0,
+      percentage_deviation: 0,
+      explanation: "Insufficient surveillance data.",
+    };
+  }
+
+  const splitIdx = Math.max(5, Math.floor(vals.length * 0.75));
+  const baseline = vals.slice(0, splitIdx);
+  const recent = vals.slice(splitIdx);
+
+  const mu0 = baseline.reduce((a, b) => a + b, 0) / baseline.length;
+  const variance = baseline.reduce((a, b) => a + Math.pow(b - mu0, 2), 0) / baseline.length;
+  const sigma0 = Math.max(1.0, Math.sqrt(variance));
+
+  const recentMean = recent.reduce((a, b) => a + b, 0) / recent.length;
+  const pctDev = Math.round(((recentMean - mu0) / Math.max(1, mu0)) * 1000) / 10;
+
+  // EWMA
+  const alpha = payload.ewma_alpha ?? 0.25;
+  let s = mu0;
+  for (const v of vals) {
+    s = alpha * v + (1.0 - alpha) * s;
+  }
+  const ewmaZ = Math.round(((s - mu0) / sigma0) * 100) / 100;
+  const ewmaTriggered = ewmaZ > 2.2;
+
+  // CUSUM
+  const k = (payload.cusum_k ?? 0.5) * sigma0;
+  const h = (payload.cusum_h ?? 4.0) * sigma0;
+  let cPlus = 0;
+  for (const v of recent) {
+    cPlus = Math.max(0, cPlus + (v - mu0 - k));
+  }
+  const cusumTriggered = cPlus > h;
+  const cusumStat = Math.round((cPlus / sigma0) * 100) / 100;
+
+  const algos: string[] = [];
+  if (ewmaTriggered) algos.push("EWMA Control Chart");
+  if (cusumTriggered) algos.push("CUSUM Shift Detector");
+
+  let severity: "critical" | "warning" | "info" = "info";
+  if (cusumTriggered && ewmaZ >= 3.0) {
+    severity = "critical";
+  } else if (algos.length > 0) {
+    severity = "warning";
+  }
+
+  const explanation =
+    severity === "critical"
+      ? `Critical epidemiological surge detected: ${pctDev > 0 ? "+" : ""}${pctDev}% shift (EWMA z=${ewmaZ}, CUSUM=${cusumStat}σ).`
+      : severity === "warning"
+      ? `Elevated consumption/footfall velocity: ${pctDev > 0 ? "+" : ""}${pctDev}% above baseline (EWMA z=${ewmaZ}).`
+      : "Surveillance metrics within normal baseline standard deviation bounds.";
+
+  return {
+    is_anomaly: algos.length > 0,
+    severity,
+    algorithm_triggered: algos,
+    ewma_zscore: ewmaZ,
+    cusum_statistic: cusumStat,
+    baseline_mean: Math.round(mu0 * 10) / 10,
+    recent_mean: Math.round(recentMean * 10) / 10,
+    percentage_deviation: pctDev,
+    explanation,
+  };
+}
+
+export async function detectAnomaly(payload: AnomalyDetectPayload): Promise<AnomalyDetectResult> {
+  const serviceUrl = env.ML_SERVICE_URL;
+
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 2000);
+
+    const res = await fetch(`${serviceUrl}/anomaly/detect`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch {
+    // Fallback to local statistical implementation
+  }
+
+  return localAnomalyDetect(payload);
+}
+

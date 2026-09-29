@@ -211,3 +211,100 @@ def generate_forecast(req: ForecastRequest):
         model_weights=weights_dict,
         predictions=predictions
     )
+
+class AnomalyDetectRequest(BaseModel):
+    series_name: str
+    values: List[float]
+    ewma_alpha: float = 0.25
+    cusum_k: float = 0.5 # allowable slack
+    cusum_h: float = 4.0 # decision threshold multiplier
+
+class AnomalyDetectResponse(BaseModel):
+    is_anomaly: bool
+    severity: str # critical, warning, info
+    algorithm_triggered: List[str]
+    ewma_zscore: float
+    cusum_statistic: float
+    baseline_mean: float
+    recent_mean: float
+    percentage_deviation: float
+    explanation: str
+
+@app.post("/anomaly/detect", response_model=AnomalyDetectResponse)
+def detect_anomaly(req: AnomalyDetectRequest):
+    vals = req.values
+    if len(vals) < 7:
+        return AnomalyDetectResponse(
+            is_anomaly=False,
+            severity="info",
+            algorithm_triggered=[],
+            ewma_zscore=0.0,
+            cusum_statistic=0.0,
+            baseline_mean=float(np.mean(vals)) if vals else 0.0,
+            recent_mean=float(np.mean(vals)) if vals else 0.0,
+            percentage_deviation=0.0,
+            explanation="Insufficient data points for statistical surveillance."
+        )
+
+    # Historical baseline (first 75% of series) vs Recent window (last 25%)
+    split_idx = max(5, int(len(vals) * 0.75))
+    baseline = np.array(vals[:split_idx], dtype=float)
+    recent = np.array(vals[split_idx:], dtype=float)
+
+    mu_0 = float(np.mean(baseline))
+    sigma_0 = float(max(1.0, np.std(baseline)))
+    recent_mean = float(np.mean(recent))
+
+    pct_dev = round(((recent_mean - mu_0) / max(1.0, mu_0)) * 100.0, 1)
+
+    # 1. EWMA (Exponentially Weighted Moving Average)
+    alpha = req.ewma_alpha
+    s = mu_0
+    for v in vals:
+        s = alpha * v + (1.0 - alpha) * s
+
+    ewma_z = round((s - mu_0) / sigma_0, 2)
+    ewma_triggered = ewma_z > 2.2
+
+    # 2. Tabular CUSUM for positive drift
+    k = req.cusum_k * sigma_0
+    h = req.cusum_h * sigma_0
+    c_plus = 0.0
+    for v in vals[split_idx:]:
+        c_plus = max(0.0, c_plus + (v - mu_0 - k))
+
+    cusum_triggered = c_plus > h
+    cusum_stat = round(c_plus / sigma_0, 2)
+
+    triggered_algos = []
+    if ewma_triggered:
+        triggered_algos.append("EWMA Control Chart")
+    if cusum_triggered:
+        triggered_algos.append("CUSUM Shift Detector")
+
+    is_anomaly = len(triggered_algos) > 0
+
+    severity = "info"
+    if cusum_triggered and ewma_z >= 3.0:
+        severity = "critical"
+    elif is_anomaly:
+        severity = "warning"
+
+    explanation = "Normal stochastic fluctuations within expected 95% confidence bounds."
+    if severity == "critical":
+        explanation = f"Critical outbreak/consumption surge detected: {pct_dev:+}% above baseline (EWMA z={ewma_z}, CUSUM={cusum_stat}σ)."
+    elif severity == "warning":
+        explanation = f"Moderate upward drift detected: {pct_dev:+}% above baseline (EWMA z={ewma_z})."
+
+    return AnomalyDetectResponse(
+        is_anomaly=is_anomaly,
+        severity=severity,
+        algorithm_triggered=triggered_algos,
+        ewma_zscore=ewma_z,
+        cusum_statistic=cusum_stat,
+        baseline_mean=round(mu_0, 1),
+        recent_mean=round(recent_mean, 1),
+        percentage_deviation=pct_dev,
+        explanation=explanation
+    )
+
