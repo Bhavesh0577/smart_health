@@ -46,18 +46,24 @@ export async function injectEmergencyOutbreakCluster(node = "node_in_karnataka")
         phcId: phc.id,
         opdCount: 145,
         symptomCategory: "fever",
+        dataOrigin: "simulated",
+        sourceDataset: "emergency_outbreak_simulator",
       },
       {
         time: now,
         phcId: phc.id,
         opdCount: 95,
         symptomCategory: "diarrhea",
+        dataOrigin: "simulated",
+        sourceDataset: "emergency_outbreak_simulator",
       },
       {
         time: now,
         phcId: phc.id,
         opdCount: 40,
         symptomCategory: "respiratory",
+        dataOrigin: "simulated",
+        sourceDataset: "emergency_outbreak_simulator",
       },
     ]);
 
@@ -69,6 +75,8 @@ export async function injectEmergencyOutbreakCluster(node = "node_in_karnataka")
       occupiedBeds: phc.bedCapacity || 12,
       criticalCareBeds: 2,
       availableOxygenBeds: 0,
+      dataOrigin: "simulated",
+      sourceDataset: "emergency_outbreak_simulator",
     });
 
     // Depleted stock levels for critical anti-epidemic medicines
@@ -87,6 +95,8 @@ export async function injectEmergencyOutbreakCluster(node = "node_in_karnataka")
         expiryDate: new Date(now.getTime() + 180 * 24 * 60 * 60 * 1000),
         daysOfCover: daysCover,
         source: "emergency_rapid_audit",
+        dataOrigin: "simulated",
+        sourceDataset: "emergency_outbreak_simulator",
       });
     }
 
@@ -152,6 +162,8 @@ export async function injectEmergencyOutbreakCluster(node = "node_in_karnataka")
       title: alt.title,
       message: alt.message,
       status: alt.status,
+      dataOrigin: "derived",
+      sourceDataset: "cusum_detector",
     });
   }
 
@@ -213,6 +225,8 @@ export async function injectEmergencyOutbreakCluster(node = "node_in_karnataka")
     totalCostEstimate: 4250.0,
     explanation: "EMERGENCY PROTOCOL ACTIVATED: High-speed cross-district transfer dispatched from Belagavi central depot to contain the Kalaburagi febrile epidemic surge.",
     triggeredBy: "emergency_cluster_pipeline",
+    dataOrigin: "derived",
+    sourceDataset: "or_tools_optimizer",
   });
 
   // 6. Insert Emergency Copilot Briefing
@@ -222,6 +236,8 @@ export async function injectEmergencyOutbreakCluster(node = "node_in_karnataka")
     district: "Kalaburagi",
     contentMarkdown: `### 🚨 EMERGENCY SITUATION REPORT: Kalaburagi Outbreak Cluster\n\n**Severity Level: CRITICAL (Red Tier)**\n\n**Epidemiological Summary:**\n- **Epidemic Spike:** 4 PHCs in Kalaburagi (Aland, Sedam, Chincholi, Afzalpur) report a synchronized 420% surge in acute febrile illness and dehydration.\n- **Inventory Status:** Paracetamol and ORS inventory exhausted to under 12 hours of cover.\n- **Bed Headroom:** 100% bed saturation; zero critical care beds available.\n\n**AI Redistribution Countermeasure:**\n- Dispatched Emergency Plan moving **2,500 Paracetamol tablets**, **1,800 ORS sachets**, and **600 Antimalarials** from Belagavi.\n- Western transport corridor prioritized to circumvent active monsoon road bottlenecks.\n\n**Required Executive Actions:**\n1. Approve emergency transport clearances immediately.\n2. Reassign 4 roving medical officers from Mysore to northern sector.\n3. Deploy field mobile chlorination & vector spray teams.`,
     generatedBy: "gemini-copilot-emergency",
+    dataOrigin: "derived",
+    sourceDataset: "gemini_copilot",
     keyActionsJson: [
       "Approve Emergency Plan immediately",
       "Dispatch Roving Medical Units to Aland PHC",

@@ -70,6 +70,11 @@
 - **Decision:** Ingest the Primary Care essential medicine subset directly from the National List of Essential Medicines (NLEM 2022, MoHFW), recording official gazette page numbers, therapeutic categories, and level of care (`data_origin: 'real'`). Compute facility catchment populations derived from the Census of India 2011 Primary Census Abstract ($\text{Catchment} = \text{District Population} / \text{PHC Count}$, `data_origin: 'derived'`).
 - **Rationale:** Grounding drug formulations and clinical care thresholds in the official national pharmacopoeia prevents arbitrary medicine schemas. Catchment population derivation establishes an authoritative demographic basis for footfall and consumption scaling.
 
+### ADR-016: IDSP & NVBDCP Epidemiological Calibration Priors
+- **Decision:** Extract and store seasonal epidemiology parameters (diarrhea monsoon $2.4\times$ multiplier with 4-day lag, vector fever $2.8\times$ multiplier with 14-day lag, ARI winter $1.6\times$ multiplier) from IDSP and NVBDCP surveillance bulletins as calibration parameters (`data_origin: 'real'`). Clearly document that these represent macro-surveillance calibration priors, never claiming patient-level or PHC-level ground truth.
+- **Rationale:** Real facility-level clinical registries are strictly confidential to prevent patient re-identification. Using published epidemiological priors honest-scales the operational simulator without data fabrication.
+
+
 
 
 
