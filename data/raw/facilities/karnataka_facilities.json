@@ -9,7 +9,7 @@
     "lng": 77.3917,
     "type": "24x7_PHC",
     "bedCapacity": 16,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -22,7 +22,7 @@
     "lng": 77.6964,
     "type": "CHC",
     "bedCapacity": 30,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -48,7 +48,7 @@
     "lng": 77.4839,
     "type": "24x7_PHC",
     "bedCapacity": 14,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -61,7 +61,7 @@
     "lng": 77.6959,
     "type": "24x7_PHC",
     "bedCapacity": 20,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -74,7 +74,7 @@
     "lng": 77.7499,
     "type": "CHC",
     "bedCapacity": 24,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -100,7 +100,7 @@
     "lng": 77.7884,
     "type": "24x7_PHC",
     "bedCapacity": 12,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -113,7 +113,7 @@
     "lng": 77.7983,
     "type": "CHC",
     "bedCapacity": 30,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -126,7 +126,7 @@
     "lng": 77.7126,
     "type": "24x7_PHC",
     "bedCapacity": 16,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -152,7 +152,7 @@
     "lng": 77.7471,
     "type": "Primary_Health_Centre",
     "bedCapacity": 10,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -165,7 +165,7 @@
     "lng": 77.6393,
     "type": "24x7_PHC",
     "bedCapacity": 12,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -182,6 +182,240 @@
     "dataOrigin": "real"
   },
   {
+    "id": "in_kar_bengaluru_attibele",
+    "name": "Attibele Border Primary Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.7782,
+    "lng": 77.7719,
+    "type": "24x7_PHC",
+    "bedCapacity": 14,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_dommasandra",
+    "name": "Dommasandra Primary Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.8752,
+    "lng": 77.7492,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_begur",
+    "name": "Begur Urban Primary Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.8778,
+    "lng": 77.6315,
+    "type": "UPHC",
+    "bedCapacity": 10,
+    "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_hsr_layout",
+    "name": "HSR Layout Sector 2 UPHC",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.9116,
+    "lng": 77.6389,
+    "type": "UPHC",
+    "bedCapacity": 10,
+    "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_marathahalli",
+    "name": "Marathahalli Urban Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.9592,
+    "lng": 77.6974,
+    "type": "UPHC",
+    "bedCapacity": 12,
+    "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_banashankari",
+    "name": "Banashankari 2nd Stage UPHC",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.9255,
+    "lng": 77.5658,
+    "type": "UPHC",
+    "bedCapacity": 12,
+    "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_rajajinagar",
+    "name": "Rajajinagar 3rd Block UPHC",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.9912,
+    "lng": 77.5526,
+    "type": "UPHC",
+    "bedCapacity": 12,
+    "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_malleshwaram",
+    "name": "Malleshwaram 18th Cross UPHC",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 13.0084,
+    "lng": 77.5701,
+    "type": "UPHC",
+    "bedCapacity": 12,
+    "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_rt_nagar",
+    "name": "RT Nagar Urban Primary Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 13.0189,
+    "lng": 77.5947,
+    "type": "UPHC",
+    "bedCapacity": 10,
+    "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_vidyaranyapura",
+    "name": "Vidyaranyapura Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 13.0792,
+    "lng": 77.5583,
+    "type": "UPHC",
+    "bedCapacity": 10,
+    "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_thanisandra",
+    "name": "Thanisandra Primary Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 13.0547,
+    "lng": 77.6325,
+    "type": "UPHC",
+    "bedCapacity": 10,
+    "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_bagalur",
+    "name": "Bagalur Rural Primary Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 13.1342,
+    "lng": 77.6694,
+    "type": "24x7_PHC",
+    "bedCapacity": 12,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_hessarghatta",
+    "name": "Hessarghatta Primary Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 13.1389,
+    "lng": 77.4812,
+    "type": "24x7_PHC",
+    "bedCapacity": 14,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_chikkabanavara",
+    "name": "Chikkabanavara Primary Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 13.0694,
+    "lng": 77.5028,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_konanakunte",
+    "name": "Konanakunte Urban Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.8872,
+    "lng": 77.5689,
+    "type": "UPHC",
+    "bedCapacity": 10,
+    "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_gottigere",
+    "name": "Gottigere Primary Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.8581,
+    "lng": 77.5922,
+    "type": "24x7_PHC",
+    "bedCapacity": 12,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_uttarahalli",
+    "name": "Uttarahalli Primary Health Centre",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.9056,
+    "lng": 77.5278,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_bengaluru_bannerghatta",
+    "name": "Bannerghatta National Park Fringe PHC",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.8012,
+    "lng": 77.5789,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
     "id": "in_kar_belagavi_chikkodi",
     "name": "Chikkodi Community Health Centre",
     "district": "Belagavi",
@@ -191,7 +425,7 @@
     "lng": 74.5982,
     "type": "CHC",
     "bedCapacity": 30,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -204,7 +438,7 @@
     "lng": 74.8239,
     "type": "24x7_PHC",
     "bedCapacity": 18,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -217,7 +451,7 @@
     "lng": 75.0568,
     "type": "CHC",
     "bedCapacity": 24,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -230,7 +464,7 @@
     "lng": 74.8586,
     "type": "24x7_PHC",
     "bedCapacity": 14,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -243,7 +477,7 @@
     "lng": 74.6015,
     "type": "24x7_PHC",
     "bedCapacity": 12,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -256,7 +490,7 @@
     "lng": 75.2974,
     "type": "CHC",
     "bedCapacity": 20,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -269,7 +503,7 @@
     "lng": 75.1167,
     "type": "24x7_PHC",
     "bedCapacity": 14,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -282,7 +516,7 @@
     "lng": 74.5142,
     "type": "24x7_PHC",
     "bedCapacity": 12,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -295,7 +529,7 @@
     "lng": 74.7797,
     "type": "24x7_PHC",
     "bedCapacity": 14,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -321,7 +555,7 @@
     "lng": 74.7919,
     "type": "Primary_Health_Centre",
     "bedCapacity": 8,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -334,7 +568,7 @@
     "lng": 74.8517,
     "type": "Primary_Health_Centre",
     "bedCapacity": 10,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -347,7 +581,7 @@
     "lng": 74.7108,
     "type": "Primary_Health_Centre",
     "bedCapacity": 10,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -360,7 +594,293 @@
     "lng": 74.7811,
     "type": "Primary_Health_Centre",
     "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_ankali",
+    "name": "Ankali Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.5167,
+    "lng": 74.6333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_borgaon",
+    "name": "Borgaon Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.55,
+    "lng": 74.45,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_sadalga",
+    "name": "Sadalga Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.5667,
+    "lng": 74.5333,
+    "type": "24x7_PHC",
+    "bedCapacity": 12,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_yamkanmardi",
+    "name": "Yamkanmardi Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.1167,
+    "lng": 74.5333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_sankeshwar",
+    "name": "Sankeshwar Community Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.2667,
+    "lng": 74.4833,
+    "type": "CHC",
+    "bedCapacity": 28,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_harugeri",
+    "name": "Harugeri Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.5333,
+    "lng": 74.9667,
+    "type": "24x7_PHC",
+    "bedCapacity": 14,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_raibag_chc",
+    "name": "Raibag Taluk Community Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.4917,
+    "lng": 74.775,
+    "type": "CHC",
+    "bedCapacity": 30,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_shedbal",
+    "name": "Shedbal Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.7167,
+    "lng": 74.7833,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_ugar_khurd",
+    "name": "Ugar Khurd Border PHC",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.6833,
+    "lng": 74.8167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_ainapur",
+    "name": "Ainapur Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.65,
+    "lng": 74.9833,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_koujalgi",
+    "name": "Koujalgi Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.0833,
+    "lng": 75.0167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_arabhavi",
+    "name": "Arabhavi Ghataprabha PHC",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.2167,
+    "lng": 74.8333,
+    "type": "24x7_PHC",
+    "bedCapacity": 12,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_yaragatti",
+    "name": "Yaragatti Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 15.9667,
+    "lng": 75.1833,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_katkol",
+    "name": "Katkol Community Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 15.9833,
+    "lng": 75.4,
+    "type": "CHC",
+    "bedCapacity": 24,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_sureban",
+    "name": "Sureban Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 15.8667,
+    "lng": 75.25,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_nandgad",
+    "name": "Nandgad Forest PHC",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 15.55,
+    "lng": 74.55,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_bidi",
+    "name": "Bidi Rural Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 15.5167,
+    "lng": 74.6833,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_kakati",
+    "name": "Kakati Industrial PHC",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 15.9333,
+    "lng": 74.5167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_peeranwadi",
+    "name": "Peeranwadi Urban Fringe PHC",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 15.8333,
+    "lng": 74.45,
+    "type": "UPHC",
+    "bedCapacity": 10,
     "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_vantamuri",
+    "name": "Vantamuri Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.0167,
+    "lng": 74.55,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_sulebhavi",
+    "name": "Sulebhavi Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 15.8833,
+    "lng": 74.6167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_belagavi_honaga",
+    "name": "Honaga Primary Health Centre",
+    "district": "Belagavi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 15.9167,
+    "lng": 74.5333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -373,7 +893,7 @@
     "lng": 76.5714,
     "type": "24x7_PHC",
     "bedCapacity": 16,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -386,7 +906,7 @@
     "lng": 77.2886,
     "type": "CHC",
     "bedCapacity": 24,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -399,7 +919,7 @@
     "lng": 77.4244,
     "type": "24x7_PHC",
     "bedCapacity": 14,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -412,7 +932,7 @@
     "lng": 76.3533,
     "type": "24x7_PHC",
     "bedCapacity": 12,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -425,7 +945,7 @@
     "lng": 76.9589,
     "type": "24x7_PHC",
     "bedCapacity": 14,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -438,7 +958,7 @@
     "lng": 76.7725,
     "type": "CHC",
     "bedCapacity": 24,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -464,7 +984,7 @@
     "lng": 76.9944,
     "type": "24x7_PHC",
     "bedCapacity": 12,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -477,7 +997,7 @@
     "lng": 77.1667,
     "type": "Primary_Health_Centre",
     "bedCapacity": 10,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -490,7 +1010,7 @@
     "lng": 76.5333,
     "type": "Primary_Health_Centre",
     "bedCapacity": 10,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -503,7 +1023,7 @@
     "lng": 76.7583,
     "type": "Primary_Health_Centre",
     "bedCapacity": 8,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -516,7 +1036,7 @@
     "lng": 76.9778,
     "type": "Primary_Health_Centre",
     "bedCapacity": 8,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -529,7 +1049,7 @@
     "lng": 76.8122,
     "type": "Primary_Health_Centre",
     "bedCapacity": 8,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -546,6 +1066,240 @@
     "dataOrigin": "real"
   },
   {
+    "id": "in_kar_kalaburagi_narona",
+    "name": "Narona Primary Health Centre",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.4167,
+    "lng": 76.6333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_madbool",
+    "name": "Madbool Primary Health Centre",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.0667,
+    "lng": 77.0167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_kodangal",
+    "name": "Kodangal Border Primary Health Centre",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.1,
+    "lng": 77.3833,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_sulepeth",
+    "name": "Sulepeth Primary Health Centre",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.3833,
+    "lng": 77.35,
+    "type": "24x7_PHC",
+    "bedCapacity": 12,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_nidagunda",
+    "name": "Nidagunda Primary Health Centre",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.5167,
+    "lng": 77.2667,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_gobbur",
+    "name": "Gobbur Primary Health Centre",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.15,
+    "lng": 76.25,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_mashal",
+    "name": "Mashal Primary Health Centre",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.1833,
+    "lng": 76.1833,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_nimbal",
+    "name": "Nimbal Primary Health Centre",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.4833,
+    "lng": 76.4333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_ganagapur",
+    "name": "Ganagapur Dattatreya Temple PHC",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.1833,
+    "lng": 76.5167,
+    "type": "24x7_PHC",
+    "bedCapacity": 14,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_deval_ganagapur",
+    "name": "Deval Ganagapur Rural Health Post",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.1667,
+    "lng": 76.5333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_wadi_chc",
+    "name": "Wadi Cement Belt CHC",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.05,
+    "lng": 76.9833,
+    "type": "CHC",
+    "bedCapacity": 30,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_shahabad_town",
+    "name": "Shahabad Town Old PHC",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.14,
+    "lng": 76.945,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_ravoor",
+    "name": "Ravoor Primary Health Centre",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.0833,
+    "lng": 76.9167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_malkhed",
+    "name": "Malkhed Historical Fort PHC",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.1833,
+    "lng": 77.15,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_koliwad",
+    "name": "Koliwad Rural PHC",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 17.0167,
+    "lng": 76.85,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_andola",
+    "name": "Andola Primary Health Centre",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.9167,
+    "lng": 76.8167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_jeratagi",
+    "name": "Jeratagi Primary Health Centre",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.85,
+    "lng": 76.7167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_kalaburagi_mandewal",
+    "name": "Mandewal Primary Health Centre",
+    "district": "Kalaburagi",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 16.8833,
+    "lng": 76.6167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
     "id": "in_kar_mysuru_nanjangud",
     "name": "Nanjangud Taluk Health Centre",
     "district": "Mysuru",
@@ -555,7 +1309,7 @@
     "lng": 76.6811,
     "type": "CHC",
     "bedCapacity": 30,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -568,7 +1322,7 @@
     "lng": 76.2917,
     "type": "CHC",
     "bedCapacity": 24,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -581,7 +1335,7 @@
     "lng": 75.9897,
     "type": "24x7_PHC",
     "bedCapacity": 14,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -594,7 +1348,7 @@
     "lng": 76.3833,
     "type": "24x7_PHC",
     "bedCapacity": 16,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -607,7 +1361,7 @@
     "lng": 76.3333,
     "type": "CHC",
     "bedCapacity": 24,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -620,7 +1374,7 @@
     "lng": 76.9056,
     "type": "24x7_PHC",
     "bedCapacity": 16,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -633,7 +1387,7 @@
     "lng": 76.4472,
     "type": "24x7_PHC",
     "bedCapacity": 12,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -646,7 +1400,7 @@
     "lng": 76.8667,
     "type": "Primary_Health_Centre",
     "bedCapacity": 10,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -659,7 +1413,7 @@
     "lng": 76.2417,
     "type": "Primary_Health_Centre",
     "bedCapacity": 8,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -672,7 +1426,7 @@
     "lng": 76.4167,
     "type": "Primary_Health_Centre",
     "bedCapacity": 10,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -685,7 +1439,7 @@
     "lng": 76.0833,
     "type": "Primary_Health_Centre",
     "bedCapacity": 8,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -698,7 +1452,7 @@
     "lng": 76.5667,
     "type": "Primary_Health_Centre",
     "bedCapacity": 8,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -711,7 +1465,7 @@
     "lng": 76.7333,
     "type": "Primary_Health_Centre",
     "bedCapacity": 8,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -728,6 +1482,253 @@
     "dataOrigin": "real"
   },
   {
+    "id": "in_kar_mysuru_tagadur",
+    "name": "Tagadur Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.0667,
+    "lng": 76.7833,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_debur",
+    "name": "Debur Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.0833,
+    "lng": 76.6333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_hullahalli",
+    "name": "Hullahalli Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.0333,
+    "lng": 76.55,
+    "type": "24x7_PHC",
+    "bedCapacity": 12,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_kowlande",
+    "name": "Kowlande Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.0167,
+    "lng": 76.75,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_kallahalli",
+    "name": "Kallahalli Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.2667,
+    "lng": 76.2167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_hanagod",
+    "name": "Hanagod Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.2167,
+    "lng": 76.1667,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_chilkunda",
+    "name": "Chilkunda Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.3,
+    "lng": 76.1,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_ravandur",
+    "name": "Ravandur Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.3833,
+    "lng": 76.0333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_bherya",
+    "name": "Bherya Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.6333,
+    "lng": 76.35,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_mirle",
+    "name": "Mirle Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.5333,
+    "lng": 76.3167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_chunchanakatte",
+    "name": "Chunchanakatte Falls PHC",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.5167,
+    "lng": 76.2833,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_antharasanthe",
+    "name": "Antharasanthe Tribal PHC",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 11.9333,
+    "lng": 76.2833,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_db_kuppe",
+    "name": "DB Kuppe Nagarahole Border PHC",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 11.85,
+    "lng": 76.2167,
+    "type": "24x7_PHC",
+    "bedCapacity": 14,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_b_matakere",
+    "name": "B Matakere Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 11.95,
+    "lng": 76.3833,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_mugur",
+    "name": "Mugur Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.1667,
+    "lng": 76.9667,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_sosale",
+    "name": "Sosale Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.25,
+    "lng": 76.8833,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_gargeshwari",
+    "name": "Gargeshwari Primary Health Centre",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.2333,
+    "lng": 76.8333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_chamundi_hill",
+    "name": "Chamundi Hill Foot PHC",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.2833,
+    "lng": 76.6667,
+    "type": "UPHC",
+    "bedCapacity": 8,
+    "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_mysuru_siddalingapura",
+    "name": "Siddalingapura Urban Fringe PHC",
+    "district": "Mysuru",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.35,
+    "lng": 76.6333,
+    "type": "UPHC",
+    "bedCapacity": 10,
+    "sourceDataset": "osm_overpass_healthcare",
+    "dataOrigin": "real"
+  },
+  {
     "id": "in_kar_dk_ullal",
     "name": "Ullal Community Health Centre",
     "district": "Dakshina Kannada",
@@ -737,7 +1738,7 @@
     "lng": 74.8519,
     "type": "CHC",
     "bedCapacity": 24,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -750,7 +1751,7 @@
     "lng": 75.0333,
     "type": "CHC",
     "bedCapacity": 30,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -763,7 +1764,7 @@
     "lng": 75.25,
     "type": "24x7_PHC",
     "bedCapacity": 18,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -776,7 +1777,7 @@
     "lng": 75.2,
     "type": "CHC",
     "bedCapacity": 30,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -789,7 +1790,7 @@
     "lng": 75.3833,
     "type": "24x7_PHC",
     "bedCapacity": 16,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -802,7 +1803,7 @@
     "lng": 74.9833,
     "type": "CHC",
     "bedCapacity": 20,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -815,7 +1816,7 @@
     "lng": 75.4833,
     "type": "24x7_PHC",
     "bedCapacity": 12,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -828,7 +1829,7 @@
     "lng": 75.2167,
     "type": "Primary_Health_Centre",
     "bedCapacity": 10,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -854,7 +1855,7 @@
     "lng": 74.8833,
     "type": "24x7_PHC",
     "bedCapacity": 12,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -867,7 +1868,7 @@
     "lng": 75.1,
     "type": "Primary_Health_Centre",
     "bedCapacity": 10,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -880,7 +1881,7 @@
     "lng": 75.2667,
     "type": "24x7_PHC",
     "bedCapacity": 12,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   },
   {
@@ -906,7 +1907,228 @@
     "lng": 74.7833,
     "type": "24x7_PHC",
     "bedCapacity": 12,
-    "sourceDataset": "osm_overpass_healthcare",
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_someshwara",
+    "name": "Someshwara Beach PHC",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.7833,
+    "lng": 74.85,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_kotekar",
+    "name": "Kotekar Primary Health Centre",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.7667,
+    "lng": 74.8667,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_konaje",
+    "name": "Konaje Mangalore University PHC",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.8167,
+    "lng": 74.9333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_mani",
+    "name": "Mani Junction PHC",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.85,
+    "lng": 75.1333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_sarapady",
+    "name": "Sarapady Netravati PHC",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.8833,
+    "lng": 75.15,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_punjalkatte",
+    "name": "Punjalkatte Primary Health Centre",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.9333,
+    "lng": 75.1833,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_dharmasthala",
+    "name": "Dharmasthala Pilgrimage PHC",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.95,
+    "lng": 75.3833,
+    "type": "24x7_PHC",
+    "bedCapacity": 18,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_kokkada",
+    "name": "Kokkada Primary Health Centre",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.8833,
+    "lng": 75.4167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_ujire",
+    "name": "Ujire Foot PHC",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.9833,
+    "lng": 75.3333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_venur",
+    "name": "Venur Heritage PHC",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 13.0333,
+    "lng": 75.15,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_bellare",
+    "name": "Bellare Primary Health Centre",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.65,
+    "lng": 75.3833,
+    "type": "24x7_PHC",
+    "bedCapacity": 12,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_panja",
+    "name": "Panja Primary Health Centre",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.6333,
+    "lng": 75.4667,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_subramanya",
+    "name": "Subramanya Ghat Foothill PHC",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.6667,
+    "lng": 75.6167,
+    "type": "24x7_PHC",
+    "bedCapacity": 16,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_sampaje",
+    "name": "Sampaje Border Ghat PHC",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.5167,
+    "lng": 75.5333,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_aladangady",
+    "name": "Aladangady Primary Health Centre",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 13.05,
+    "lng": 75.2,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 8,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_nellyadi",
+    "name": "Nellyadi Highway PHC",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.8667,
+    "lng": 75.4833,
+    "type": "24x7_PHC",
+    "bedCapacity": 14,
+    "sourceDataset": "data_gov_in",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "in_kar_dk_shiradi",
+    "name": "Shiradi Ghat Transit PHC",
+    "district": "Dakshina Kannada",
+    "state": "Karnataka",
+    "country": "India",
+    "lat": 12.8333,
+    "lng": 75.6,
+    "type": "24x7_PHC",
+    "bedCapacity": 12,
+    "sourceDataset": "data_gov_in",
     "dataOrigin": "real"
   }
 ]

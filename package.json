@@ -11,6 +11,9 @@
     "seed": "tsx scripts/seed.ts",
     "seed:reset": "tsx scripts/seed.ts --reset",
     "data:fetch": "tsx scripts/fetch-all.ts",
+    "data:load": "tsx scripts/load-data.ts",
+    "data:reset": "tsx scripts/load-data.ts --reset",
+    "data:validate": "tsx scripts/validate-data.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push"

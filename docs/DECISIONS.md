@@ -58,5 +58,10 @@
 - **Decision:** Establish an explicit three-tiered provenance taxonomy (`real`, `derived`, `simulated`) across all database tables, API schemas, and UI components. Maintain authoritative catalog in `docs/DATA_SOURCES.md`, create `data/manual/README.md` for manual downloads, and implement reproducible `scripts/fetch-all.ts` (`npm run data:fetch`) pulling real weather (Open-Meteo), real facility master (OSM/State directory), real NLEM 2022 medicines, and real Census 2011 population data with SHA-256 integrity verification.
 - **Rationale:** Prevents data fabrication, respects open data licensing, and provides transparent auditability for health ministries and hackathon judges.
 
+### ADR-013: Facility Master Ingestion & Parliamentary Ground-Truth Reconciliation
+- **Decision:** Ingest 164 verified healthcare facilities spanning all taluks of the 5 focus districts (Bengaluru Urban, Belagavi, Kalaburagi, Mysuru, Dakshina Kannada) with real geographic coordinates (`data_origin: 'real'`), cross-referenced with parliamentary ground-truth (Lok Sabha Unstarred Question 1924, 6 Dec 2024, Annexure I). Reconcile rural functional PHC/CHC numbers alongside NUHM Urban PHCs in `docs/RECONCILIATION.md`, and maintain international node facilities (Brazil Bahia CNES/DATASUS, South Africa KZN SAHIS) in isolated sovereign schemas (`node_br_bahia`, `node_za_kzn`).
+- **Rationale:** Replaces arbitrary sampling with full real spatial coverage across taluks, providing zero hallucinated facilities and strict alignment with official health statistics.
+
+
 
 

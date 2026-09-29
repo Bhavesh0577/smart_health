@@ -14,6 +14,7 @@ export interface PhcSummary {
   type: string;
   bedCapacity: number;
   targetPopulation: number;
+  catchmentPopulation?: number;
   resilienceScore: number;
   occupiedBeds: number;
   bedOccupancyPercent: number;
@@ -24,6 +25,8 @@ export interface PhcSummary {
   riskLevel: "critical" | "warning" | "healthy";
   activeAlertsCount: number;
   lastSync: string;
+  dataOrigin: string;
+  sourceDataset: string;
 }
 
 export interface PhcDetail extends PhcSummary {
@@ -165,6 +168,7 @@ export async function getAllPhcs(nodeId = "node_in_karnataka", filterDistrict?: 
       type: p.type,
       bedCapacity: p.bedCapacity,
       targetPopulation: p.targetPopulation,
+      catchmentPopulation: p.catchmentPopulation || p.targetPopulation,
       resilienceScore: dynamicResilience,
       occupiedBeds: b.occupiedBeds,
       bedOccupancyPercent: bedOccPercent,
@@ -175,6 +179,8 @@ export async function getAllPhcs(nodeId = "node_in_karnataka", filterDistrict?: 
       riskLevel,
       activeAlertsCount: alertCountMap.get(p.id) || 0,
       lastSync: "Just now (Live)",
+      dataOrigin: p.dataOrigin || "real",
+      sourceDataset: p.sourceDataset || "osm_overpass_healthcare",
     };
   });
 }
@@ -347,6 +353,7 @@ export async function getPhcDetail(nodeId = "node_in_karnataka", phcId: string):
     type: p.type,
     bedCapacity: p.bedCapacity,
     targetPopulation: p.targetPopulation,
+    catchmentPopulation: p.catchmentPopulation || p.targetPopulation,
     resilienceScore: dynamicResilience,
     occupiedBeds: latestBed.occupiedBeds,
     bedOccupancyPercent: bedOccPercent,
@@ -357,6 +364,8 @@ export async function getPhcDetail(nodeId = "node_in_karnataka", phcId: string):
     riskLevel,
     activeAlertsCount: activeAlerts.length,
     lastSync: "Real-time sync",
+    dataOrigin: p.dataOrigin || "real",
+    sourceDataset: p.sourceDataset || "osm_overpass_healthcare",
     stockInventory,
     bedHistory,
     staffHistory,
