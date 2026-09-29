@@ -1,5 +1,7 @@
 import { pgSchema, pgTable, text, timestamp, integer, real, boolean, jsonb, serial } from "drizzle-orm/pg-core";
 
+export type DataOrigin = "real" | "derived" | "simulated";
+
 export const NODE_SCHEMAS = {
   IN_KARNATAKA: "node_in_karnataka",
   BR_BAHIA: "node_br_bahia",
@@ -25,8 +27,11 @@ export function createNodeTables(schema: ReturnType<typeof pgSchema>) {
     type: text("type").notNull().default("24x7_PHC"), // 24x7_PHC, Primary_Health_Centre, CHC
     bedCapacity: integer("bed_capacity").notNull().default(10),
     targetPopulation: integer("target_population").notNull().default(30000),
+    catchmentPopulation: integer("catchment_population"),
     resilienceScore: real("resilience_score").notNull().default(75.0),
     isActive: boolean("is_active").notNull().default(true),
+    dataOrigin: text("data_origin").notNull().default("real"), // real | derived | simulated
+    sourceDataset: text("source_dataset").notNull().default("osm_overpass_healthcare"),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
   });
 
@@ -39,7 +44,25 @@ export function createNodeTables(schema: ReturnType<typeof pgSchema>) {
     unitCost: real("unit_cost").notNull(),
     reorderThreshold: integer("reorder_threshold").notNull(),
     shelfLifeDays: integer("shelf_life_days").notNull().default(730),
+    levelOfCare: text("level_of_care").default("Primary"), // Primary, Secondary, Tertiary
+    sourcePage: integer("source_page").default(1),
+    dataOrigin: text("data_origin").notNull().default("real"), // real | derived | simulated
+    sourceDataset: text("source_dataset").notNull().default("nlem_2022"),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  });
+
+  const weatherDaily = schema.table("weather_daily", {
+    id: serial("id").primaryKey(),
+    time: timestamp("time", { withTimezone: true }).notNull(),
+    district: text("district").notNull(),
+    lat: real("lat").notNull(),
+    lng: real("lng").notNull(),
+    precipitationSumMm: real("precipitation_sum_mm").notNull().default(0),
+    temperatureMaxC: real("temperature_max_c").notNull(),
+    temperatureMinC: real("temperature_min_c").notNull(),
+    isForecast: boolean("is_forecast").notNull().default(false),
+    dataOrigin: text("data_origin").notNull().default("real"), // real
+    sourceDataset: text("source_dataset").notNull().default("open_meteo_archive"),
   });
 
   const stockLevels = schema.table("stock_levels", {
@@ -52,6 +75,8 @@ export function createNodeTables(schema: ReturnType<typeof pgSchema>) {
     expiryDate: timestamp("expiry_date", { withTimezone: true }).notNull(),
     daysOfCover: real("days_of_cover").notNull().default(30),
     source: text("source").notNull().default("system_sync"), // system_sync, manual_entry, emergency_dispatch
+    dataOrigin: text("data_origin").notNull().default("simulated"), // real | derived | simulated
+    sourceDataset: text("source_dataset").default("calibrated_simulator"),
   });
 
   const bedStatus = schema.table("bed_status", {
@@ -62,6 +87,8 @@ export function createNodeTables(schema: ReturnType<typeof pgSchema>) {
     occupiedBeds: integer("occupied_beds").notNull(),
     criticalCareBeds: integer("critical_care_beds").notNull().default(2),
     availableOxygenBeds: integer("available_oxygen_beds").notNull().default(4),
+    dataOrigin: text("data_origin").notNull().default("simulated"),
+    sourceDataset: text("source_dataset").default("calibrated_simulator"),
   });
 
   const staffAttendance = schema.table("staff_attendance", {
@@ -73,6 +100,8 @@ export function createNodeTables(schema: ReturnType<typeof pgSchema>) {
     pharmacistsPresent: integer("pharmacists_present").notNull(),
     staffOnDuty: integer("staff_on_duty").notNull(),
     requiredStaff: integer("required_staff").notNull(),
+    dataOrigin: text("data_origin").notNull().default("simulated"),
+    sourceDataset: text("source_dataset").default("calibrated_simulator"),
   });
 
   const patientFootfall = schema.table("patient_footfall", {
@@ -81,6 +110,8 @@ export function createNodeTables(schema: ReturnType<typeof pgSchema>) {
     phcId: text("phc_id").notNull().references(() => phcs.id),
     opdCount: integer("opd_count").notNull(),
     symptomCategory: text("symptom_category").notNull(), // fever, respiratory, diarrhea, maternal, trauma, general
+    dataOrigin: text("data_origin").notNull().default("simulated"),
+    sourceDataset: text("source_dataset").default("calibrated_simulator"),
   });
 
   const redistributionPlans = schema.table("redistribution_plans", {
@@ -91,6 +122,8 @@ export function createNodeTables(schema: ReturnType<typeof pgSchema>) {
     totalCostEstimate: real("total_cost_estimate").notNull(),
     explanation: text("explanation").notNull(),
     triggeredBy: text("triggered_by").notNull().default("optimizer"), // optimizer, emergency_mode, manual_request
+    dataOrigin: text("data_origin").notNull().default("derived"), // derived from solver
+    sourceDataset: text("source_dataset").default("or_tools_optimizer"),
   });
 
   const alerts = schema.table("alerts", {
@@ -104,6 +137,8 @@ export function createNodeTables(schema: ReturnType<typeof pgSchema>) {
     message: text("message").notNull(),
     status: text("status").notNull().default("active"), // active, resolved, dismissed
     resolvedAt: timestamp("resolved_at", { withTimezone: true }),
+    dataOrigin: text("data_origin").notNull().default("derived"), // derived by statistical detector
+    sourceDataset: text("source_dataset").default("cusum_detector"),
   });
 
   const briefings = schema.table("briefings", {
@@ -114,11 +149,14 @@ export function createNodeTables(schema: ReturnType<typeof pgSchema>) {
     generatedBy: text("generated_by").notNull().default("gemini-copilot"),
     keyActionsJson: jsonb("key_actions_json"),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    dataOrigin: text("data_origin").notNull().default("derived"), // derived by LLM
+    sourceDataset: text("source_dataset").default("gemini_copilot"),
   });
 
   return {
     phcs,
     medicines,
+    weatherDaily,
     stockLevels,
     bedStatus,
     staffAttendance,
@@ -166,4 +204,3 @@ export function getTablesForNode(nodeKey: string) {
 }
 
 export const getNodeTables = getTablesForNode;
-

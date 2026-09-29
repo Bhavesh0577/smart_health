@@ -1,0 +1,93 @@
+[
+  {
+    "id": "br_ba_salvador_pelourinho",
+    "name": "Unidade de Saúde da Família Pelourinho",
+    "district": "Salvador",
+    "state": "Bahia",
+    "country": "Brazil",
+    "lat": -12.9711,
+    "lng": -38.5108,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "datasus_cnes",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "br_ba_salvador_barra",
+    "name": "UBS Barra / Chame-Chame",
+    "district": "Salvador",
+    "state": "Bahia",
+    "country": "Brazil",
+    "lat": -13.0039,
+    "lng": -38.5283,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 12,
+    "sourceDataset": "datasus_cnes",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "br_ba_salvador_itapua",
+    "name": "USF Itapuã Litoral",
+    "district": "Salvador",
+    "state": "Bahia",
+    "country": "Brazil",
+    "lat": -12.9419,
+    "lng": -38.3589,
+    "type": "24x7_PHC",
+    "bedCapacity": 16,
+    "sourceDataset": "datasus_cnes",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "br_ba_salvador_liberdade",
+    "name": "Centro de Saúde Liberdade",
+    "district": "Salvador",
+    "state": "Bahia",
+    "country": "Brazil",
+    "lat": -12.9519,
+    "lng": -38.4975,
+    "type": "24x7_PHC",
+    "bedCapacity": 14,
+    "sourceDataset": "datasus_cnes",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "br_ba_salvador_cabula",
+    "name": "USF Cabula VI",
+    "district": "Salvador",
+    "state": "Bahia",
+    "country": "Brazil",
+    "lat": -12.9525,
+    "lng": -38.4558,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "datasus_cnes",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "br_ba_feira_centro",
+    "name": "Policlínica Municipal Feira de Santana",
+    "district": "Feira de Santana",
+    "state": "Bahia",
+    "country": "Brazil",
+    "lat": -12.2611,
+    "lng": -38.9619,
+    "type": "CHC",
+    "bedCapacity": 22,
+    "sourceDataset": "datasus_cnes",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "br_ba_feira_tomba",
+    "name": "USF Tomba I",
+    "district": "Feira de Santana",
+    "state": "Bahia",
+    "country": "Brazil",
+    "lat": -12.2858,
+    "lng": -38.9689,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 10,
+    "sourceDataset": "datasus_cnes",
+    "dataOrigin": "real"
+  }
+]

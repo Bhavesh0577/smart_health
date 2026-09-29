@@ -54,4 +54,9 @@
 - **Decision:** Model an empirical counterfactual benchmark evaluating actual platform performance against a status quo administrative tender baseline (14-day turnaround) over 90 days of longitudinal time-series data.
 - **Rationale:** Proves clinical and economic return-on-investment to BRICS health ministers by quantifying tangible savings: 92.5% reduction in facility stock-out days, 37,500 near-expiry medicine units rescued from landfill waste, and a 58x acceleration in emergency supply dispatch.
 
+### ADR-012: Explicit Data Provenance Standards (`real`, `derived`, `simulated`) & Automated Ingestion Pipeline
+- **Decision:** Establish an explicit three-tiered provenance taxonomy (`real`, `derived`, `simulated`) across all database tables, API schemas, and UI components. Maintain authoritative catalog in `docs/DATA_SOURCES.md`, create `data/manual/README.md` for manual downloads, and implement reproducible `scripts/fetch-all.ts` (`npm run data:fetch`) pulling real weather (Open-Meteo), real facility master (OSM/State directory), real NLEM 2022 medicines, and real Census 2011 population data with SHA-256 integrity verification.
+- **Rationale:** Prevents data fabrication, respects open data licensing, and provides transparent auditability for health ministries and hackathon judges.
+
+
 

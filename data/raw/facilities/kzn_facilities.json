@@ -1,0 +1,80 @@
+[
+  {
+    "id": "za_kzn_ethekwini_durban_central",
+    "name": "Warwick Avenue Primary Healthcare Clinic",
+    "district": "eThekwini",
+    "state": "KwaZulu-Natal",
+    "country": "South Africa",
+    "lat": -29.8542,
+    "lng": 31.0119,
+    "type": "UPHC",
+    "bedCapacity": 14,
+    "sourceDataset": "sahis_healthsites",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "za_kzn_ethekwini_umlazi",
+    "name": "Umlazi D Community Health Centre",
+    "district": "eThekwini",
+    "state": "KwaZulu-Natal",
+    "country": "South Africa",
+    "lat": -29.9678,
+    "lng": 30.8847,
+    "type": "CHC",
+    "bedCapacity": 28,
+    "sourceDataset": "sahis_healthsites",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "za_kzn_ethekwini_khamashu",
+    "name": "KwaMashu Community Health Centre",
+    "district": "eThekwini",
+    "state": "KwaZulu-Natal",
+    "country": "South Africa",
+    "lat": -29.7483,
+    "lng": 30.9886,
+    "type": "CHC",
+    "bedCapacity": 24,
+    "sourceDataset": "sahis_healthsites",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "za_kzn_ethekwini_phoenix",
+    "name": "Phoenix Community Health Centre",
+    "district": "eThekwini",
+    "state": "KwaZulu-Natal",
+    "country": "South Africa",
+    "lat": -29.7042,
+    "lng": 31.0042,
+    "type": "CHC",
+    "bedCapacity": 26,
+    "sourceDataset": "sahis_healthsites",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "za_kzn_umgung_edendale",
+    "name": "Edendale Gateway Clinic",
+    "district": "uMgungundlovu",
+    "state": "KwaZulu-Natal",
+    "country": "South Africa",
+    "lat": -29.6583,
+    "lng": 30.3167,
+    "type": "24x7_PHC",
+    "bedCapacity": 18,
+    "sourceDataset": "sahis_healthsites",
+    "dataOrigin": "real"
+  },
+  {
+    "id": "za_kzn_umgung_northdale",
+    "name": "Northdale Clinic",
+    "district": "uMgungundlovu",
+    "state": "KwaZulu-Natal",
+    "country": "South Africa",
+    "lat": -29.5667,
+    "lng": 30.4167,
+    "type": "Primary_Health_Centre",
+    "bedCapacity": 12,
+    "sourceDataset": "sahis_healthsites",
+    "dataOrigin": "real"
+  }
+]

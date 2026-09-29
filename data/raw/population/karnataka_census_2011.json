@@ -1,0 +1,65 @@
+{
+  "Bengaluru Urban": {
+    "district": "Bengaluru Urban",
+    "census2011Population": 9621551,
+    "ruralPopulation": 871607,
+    "urbanPopulation": 8749944,
+    "projected2024Population": 13600000,
+    "dataOrigin": "real",
+    "sourceDataset": "census_india_2011"
+  },
+  "Belagavi": {
+    "district": "Belagavi",
+    "census2011Population": 4779661,
+    "ruralPopulation": 3568466,
+    "urbanPopulation": 1211195,
+    "projected2024Population": 5350000,
+    "dataOrigin": "real",
+    "sourceDataset": "census_india_2011"
+  },
+  "Kalaburagi": {
+    "district": "Kalaburagi",
+    "census2011Population": 2566326,
+    "ruralPopulation": 1730775,
+    "urbanPopulation": 835551,
+    "projected2024Population": 2980000,
+    "dataOrigin": "real",
+    "sourceDataset": "census_india_2011"
+  },
+  "Mysuru": {
+    "district": "Mysuru",
+    "census2011Population": 3001127,
+    "ruralPopulation": 1755714,
+    "urbanPopulation": 1245413,
+    "projected2024Population": 3450000,
+    "dataOrigin": "real",
+    "sourceDataset": "census_india_2011"
+  },
+  "Dakshina Kannada": {
+    "district": "Dakshina Kannada",
+    "census2011Population": 2089649,
+    "ruralPopulation": 1093563,
+    "urbanPopulation": 996086,
+    "projected2024Population": 2360000,
+    "dataOrigin": "real",
+    "sourceDataset": "census_india_2011"
+  },
+  "Salvador": {
+    "district": "Salvador",
+    "census2011Population": 2675656,
+    "ruralPopulation": 0,
+    "urbanPopulation": 2675656,
+    "projected2024Population": 2880000,
+    "dataOrigin": "real",
+    "sourceDataset": "census_india_2011"
+  },
+  "eThekwini": {
+    "district": "eThekwini",
+    "census2011Population": 3442361,
+    "ruralPopulation": 512000,
+    "urbanPopulation": 2930361,
+    "projected2024Population": 3950000,
+    "dataOrigin": "real",
+    "sourceDataset": "census_india_2011"
+  }
+}

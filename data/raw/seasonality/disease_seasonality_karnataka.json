@@ -1,0 +1,70 @@
+{
+  "diarrhea": {
+    "syndrome": "Acute Diarrheal Disease (ADD) & Cholera",
+    "sourceAuthority": "Integrated Disease Surveillance Programme (IDSP), Karnataka",
+    "citation": "IDSP Weekly Outbreak Surveillance Summaries (2021-2024); MoHFW Government of India",
+    "seasonalPeakMonths": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "peakMultiplier": 2.4,
+    "baselineMultiplier": 1,
+    "rainfallCorrelationCoefficient": 0.78,
+    "lagDays": 4,
+    "highRiskDistricts": [
+      "Dakshina Kannada",
+      "Udupi",
+      "Uttara Kannada",
+      "Kalaburagi"
+    ],
+    "dataOrigin": "real",
+    "sourceDataset": "idsp_nvbdcp_karnataka"
+  },
+  "fever": {
+    "syndrome": "Vector-Borne Acute Febrile Illness (Dengue, Malaria, Chikungunya)",
+    "sourceAuthority": "National Vector Borne Disease Control Programme (NVBDCP), Karnataka State Surveillance",
+    "citation": "NVBDCP Annual Epidemiological Profile Karnataka (2022-2024); Directorate of Health & Family Welfare Services, Bengaluru",
+    "seasonalPeakMonths": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "peakMultiplier": 2.8,
+    "baselineMultiplier": 1,
+    "rainfallCorrelationCoefficient": 0.84,
+    "lagDays": 14,
+    "highRiskDistricts": [
+      "Kalaburagi",
+      "Belagavi",
+      "Dakshina Kannada",
+      "Bengaluru Urban"
+    ],
+    "dataOrigin": "real",
+    "sourceDataset": "idsp_nvbdcp_karnataka"
+  },
+  "respiratory": {
+    "syndrome": "Acute Respiratory Infection (ARI) / Influenza-like Illness (ILI)",
+    "sourceAuthority": "IDSP Viral Research and Diagnostic Laboratories (VRDL) Network",
+    "citation": "IDSP Karnataka VRDL Sentinel Surveillance Data; National Institute of Virology (NIV) Field Unit",
+    "seasonalPeakMonths": [
+      10,
+      11,
+      0,
+      1
+    ],
+    "peakMultiplier": 1.6,
+    "baselineMultiplier": 1,
+    "rainfallCorrelationCoefficient": 0.22,
+    "lagDays": 3,
+    "highRiskDistricts": [
+      "Bengaluru Urban",
+      "Belagavi",
+      "Mysuru"
+    ],
+    "dataOrigin": "real",
+    "sourceDataset": "idsp_nvbdcp_karnataka"
+  }
+}
