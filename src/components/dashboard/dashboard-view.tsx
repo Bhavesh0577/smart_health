@@ -21,6 +21,7 @@ import {
   Activity,
   Layers,
   ArrowLeftRight,
+  Bot,
 } from "lucide-react";
 import {
   ResponsiveContainer,
@@ -39,8 +40,22 @@ import type { DashboardStats } from "@/lib/services/dashboard-service";
 export function DashboardView() {
   const { selectedNode, selectedDistrict, setSelectedDistrict, role } = useApp();
   const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [briefing, setBriefing] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [isPending, startTransition] = useTransition();
+
+  const fetchBriefing = async () => {
+    try {
+      const dist = selectedDistrict !== "All Districts" ? selectedDistrict : "Kalaburagi";
+      const res = await fetch(`/api/copilot/briefing?district=${encodeURIComponent(dist)}&node=${selectedNode}`);
+      const data = await res.json();
+      if (data.success) {
+        setBriefing(data.briefing);
+      }
+    } catch (e) {
+      console.warn("Could not load dashboard briefing:", e);
+    }
+  };
 
   const fetchStats = async () => {
     try {
@@ -60,6 +75,7 @@ export function DashboardView() {
 
   useEffect(() => {
     fetchStats();
+    fetchBriefing();
   }, [selectedNode, selectedDistrict]);
 
   if (loading && !stats) {
@@ -475,6 +491,41 @@ export function DashboardView() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Executive Daily Briefing Card */}
+      {briefing && (
+        <Card className="border-border/80 shadow-xs bg-card/60 backdrop-blur-sm">
+          <CardHeader className="p-4 pb-2 flex flex-row items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="p-1.5 rounded-md bg-primary/10 text-primary">
+                <Bot className="w-4 h-4" />
+              </div>
+              <div>
+                <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                  <span>Daily Executive Health Briefing</span>
+                  <Badge variant="outline" className="text-[10px] font-mono border-primary/30 text-primary">
+                    Gemini Copilot
+                  </Badge>
+                </CardTitle>
+                <CardDescription className="text-xs">
+                  {briefing.district} • {briefing.date}
+                </CardDescription>
+              </div>
+            </div>
+            <Link href="/copilot">
+              <Button variant="ghost" size="sm" className="h-7 text-xs gap-1 text-primary">
+                <span>Open Copilot Agent</span>
+                <ArrowRight className="w-3 h-3" />
+              </Button>
+            </Link>
+          </CardHeader>
+          <CardContent className="p-4 pt-2">
+            <div className="text-xs leading-relaxed text-muted-foreground whitespace-pre-wrap font-sans bg-muted/20 p-3 rounded-lg border border-border/60">
+              {briefing.contentMarkdown}
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Critical Stockout Watchlist */}
       {s?.criticalStockouts.length > 0 && (
