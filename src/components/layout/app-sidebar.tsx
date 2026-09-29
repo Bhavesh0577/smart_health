@@ -101,6 +101,13 @@ const NAV_ITEMS: { category: string; items: NavItem[] }[] = [
         href: "/impact",
         icon: BarChart3,
       },
+      {
+        title: "Data Provenance",
+        href: "/provenance",
+        icon: ShieldCheck,
+        badge: "Audit",
+        highlight: true,
+      },
     ],
   },
 ];

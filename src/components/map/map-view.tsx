@@ -19,6 +19,7 @@ import {
   Flame,
 } from "lucide-react";
 import type { PhcSummary } from "@/lib/services/phc-service";
+import { ProvenanceBadge } from "@/components/ui/provenance-badge";
 
 const NODE_CENTERS: Record<string, { center: [number, number]; zoom: number }> = {
   node_in_karnataka: { center: [75.8, 14.5], zoom: 6.8 },
@@ -254,6 +255,10 @@ export function MapView() {
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
               <span className="text-muted-foreground">Optimal Inventory (&gt; 7 days)</span>
             </div>
+            <div className="pt-1.5 border-t border-border/60 flex items-center justify-between text-[10px]">
+              <span className="text-muted-foreground">Facility Geo Layer</span>
+              <ProvenanceBadge origin="real" size="sm" />
+            </div>
           </div>
 
           {/* Emergency Outbreak Banner if Active */}
@@ -275,9 +280,12 @@ export function MapView() {
                     <CardTitle className="text-base font-bold text-foreground">
                       {selectedPhc.name}
                     </CardTitle>
-                    <CardDescription className="text-xs">
-                      {selectedPhc.district}, {selectedPhc.state} • {selectedPhc.type}
-                    </CardDescription>
+                    <div className="flex items-center gap-2 mt-1">
+                      <CardDescription className="text-xs">
+                        {selectedPhc.district}, {selectedPhc.state} • {selectedPhc.type}
+                      </CardDescription>
+                      <ProvenanceBadge origin={selectedPhc.dataOrigin as any || "real"} size="sm" />
+                    </div>
                   </div>
                   <Badge
                     variant={
@@ -298,8 +306,9 @@ export function MapView() {
                 {/* Resilience Score Gauge */}
                 <div className="p-3 rounded-lg bg-card border border-border flex items-center justify-between">
                   <div>
-                    <div className="text-[11px] font-semibold text-muted-foreground uppercase">
-                      Facility Resilience Score
+                    <div className="text-[11px] font-semibold text-muted-foreground uppercase flex items-center gap-1.5">
+                      <span>Facility Resilience Score</span>
+                      <ProvenanceBadge origin="derived" size="sm" />
                     </div>
                     <div className="text-xl font-extrabold text-foreground mt-0.5">
                       {selectedPhc.resilienceScore} <span className="text-xs font-normal text-muted-foreground">/ 100</span>
@@ -320,7 +329,12 @@ export function MapView() {
                 </div>
 
                 {/* Key Metrics Breakdown */}
-                <div className="grid grid-cols-2 gap-2 text-xs">
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between text-[11px] font-semibold text-muted-foreground">
+                    <span>Operational Telemetry</span>
+                    <ProvenanceBadge origin="simulated" size="sm" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="p-2.5 rounded-lg bg-muted/40 border border-border/60">
                     <span className="text-muted-foreground block text-[10px]">Min Days of Cover</span>
                     <span className={`text-base font-bold ${selectedPhc.minDaysOfCover <= 3.0 ? "text-destructive" : "text-foreground"}`}>
@@ -356,6 +370,7 @@ export function MapView() {
                     <span className="text-[10px] text-muted-foreground block">O2 beds ready</span>
                   </div>
                 </div>
+              </div>
 
                 {/* Coordinates & Target Population */}
                 <div className="text-[11px] text-muted-foreground space-y-1 p-2.5 rounded-lg bg-muted/20 border border-border/40">

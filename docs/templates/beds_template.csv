@@ -1,0 +1,9 @@
+# PHC Resilience Grid - Inpatient Bed Status Ingestion Template
+# Format: RFC 4180 CSV, UTF-8 encoded
+# Required columns: time (ISO-8601 or YYYY-MM-DD), phc_id, total_beds, occupied_beds, critical_care_beds, available_oxygen_beds
+time,phc_id,total_beds,occupied_beds,critical_care_beds,available_oxygen_beds
+2026-09-29,in_kar_bengaluru_nelamangala,16,11,2,4
+2026-09-29,in_kar_bengaluru_anekal,30,22,4,8
+2026-09-29,in_kar_bengaluru_kengeri,14,9,2,3
+2026-09-29,in_kar_kalaburagi_aland,16,14,2,3
+2026-09-29,in_kar_dk_ullal,24,18,3,5

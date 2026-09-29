@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { TrendingUp, RefreshCw, Sparkles, AlertTriangle } from "lucide-react";
 import type { ForecastResult } from "@/lib/ml-client";
 import type { PhcSummary } from "@/lib/services/phc-service";
+import { ProvenanceBadge } from "@/components/ui/provenance-badge";
 
 const MEDICINES = [
   { id: "MED_ORS", name: "Oral Rehydration Salts (ORS) Sachets", desc: "Monsoon Diarrhea Priority" },
@@ -87,9 +88,10 @@ export default function ForecastingPage() {
             <Badge variant="outline" className="text-xs border-primary/30 text-primary">
               Phase 3 • Fast ML
             </Badge>
+            <ProvenanceBadge origin="derived" size="sm" />
           </div>
           <p className="text-xs text-muted-foreground mt-0.5">
-            14-day auto-regressive Ridge regression incorporating seasonal lags, rainfall, and outbreak indicators
+            14-day auto-regressive Ridge regression incorporating real Open-Meteo precipitation, IDSP seasonal priors, and calibrated telemetry
           </p>
         </div>
 
@@ -108,9 +110,12 @@ export default function ForecastingPage() {
       {/* Target Selector Bar */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 p-3.5 rounded-lg bg-card border border-border/80 shadow-xs">
         <div>
-          <label className="text-[11px] font-semibold text-muted-foreground uppercase block mb-1">
-            Target Primary Health Centre (PHC)
-          </label>
+          <div className="flex items-center justify-between mb-1">
+            <label className="text-[11px] font-semibold text-muted-foreground uppercase block">
+              Target Primary Health Centre (PHC)
+            </label>
+            <ProvenanceBadge origin="real" size="sm" />
+          </div>
           <select
             value={selectedPhcId}
             onChange={(e) => setSelectedPhcId(e.target.value)}
@@ -125,9 +130,12 @@ export default function ForecastingPage() {
         </div>
 
         <div>
-          <label className="text-[11px] font-semibold text-muted-foreground uppercase block mb-1">
-            Essential Medicine (NLEM Formulation)
-          </label>
+          <div className="flex items-center justify-between mb-1">
+            <label className="text-[11px] font-semibold text-muted-foreground uppercase block">
+              Essential Medicine (NLEM Formulation)
+            </label>
+            <ProvenanceBadge origin="real" size="sm" />
+          </div>
           <select
             value={selectedMedId}
             onChange={(e) => setSelectedMedId(e.target.value)}

@@ -1,0 +1,10 @@
+# PHC Resilience Grid - Stock Inventory Ingestion Template
+# Format: RFC 4180 CSV, UTF-8 encoded
+# Required columns: time (ISO-8601 or YYYY-MM-DD), phc_id, medicine_code, qty, reorder_threshold, expiry_date, days_of_cover, source
+# Valid medicine codes: PARA-500, AMOX-500, AZI-500, ORS-21G, IFA-100, ACT-AL, INS-REG
+time,phc_id,medicine_code,qty,reorder_threshold,expiry_date,days_of_cover,source
+2026-09-29,in_kar_bengaluru_nelamangala,PARA-500,2850,1500,2028-09-29,24.5,manual_audit
+2026-09-29,in_kar_bengaluru_nelamangala,AMOX-500,1200,800,2028-03-31,21.0,manual_audit
+2026-09-29,in_kar_bengaluru_nelamangala,ORS-21G,2400,1200,2029-09-29,32.0,manual_audit
+2026-09-29,in_kar_bengaluru_nelamangala,ACT-AL,450,350,2028-09-29,18.0,manual_audit
+2026-09-29,in_kar_bengaluru_nelamangala,INS-REG,120,60,2027-09-29,20.0,manual_audit

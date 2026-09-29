@@ -22,7 +22,9 @@ import {
   Layers,
   ArrowLeftRight,
   Bot,
+  ShieldCheck,
 } from "lucide-react";
+import { ProvenanceBadge } from "@/components/ui/provenance-badge";
 import {
   ResponsiveContainer,
   AreaChart,
@@ -104,9 +106,19 @@ export function DashboardView() {
               {role.replace("_", " ")}
             </Badge>
           </div>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            Active Federated Node: <span className="font-semibold text-foreground">{s?.nodeId}</span> • 90-day time-series continuous surveillance
-          </p>
+          <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground flex-wrap">
+            <span>Active Sovereign Node: <strong className="text-foreground">{s?.nodeId}</strong></span>
+            <span>•</span>
+            <span>164 Real Facilities</span>
+            <span>•</span>
+            <Link
+              href="/provenance"
+              className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-600 dark:text-emerald-400 hover:underline"
+            >
+              <ShieldCheck className="w-3 h-3 text-emerald-500" />
+              <span>Coverage Audit</span>
+            </Link>
+          </div>
         </div>
 
         {/* District Filter Selector */}
@@ -164,12 +176,10 @@ export function DashboardView() {
         {/* Card 1: Stock-out Risk */}
         <Card className="border-border/80 shadow-xs">
           <CardHeader className="p-4 pb-2 flex flex-row items-center justify-between space-y-0">
-            <CardTitle className="text-xs font-medium text-muted-foreground">
-              Stock-Out Risk
+            <CardTitle className="text-xs font-medium text-muted-foreground flex items-center justify-between w-full">
+              <span>Stock-Out Risk</span>
+              <ProvenanceBadge origin="simulated" size="sm" />
             </CardTitle>
-            <div className={`p-1.5 rounded-md ${s?.criticalPhcsCount > 0 ? "bg-destructive/10 text-destructive" : "bg-emerald-500/10 text-emerald-500"}`}>
-              <AlertTriangle className="w-4 h-4" />
-            </div>
           </CardHeader>
           <CardContent className="p-4 pt-1">
             <div className="flex items-baseline gap-2">
@@ -192,12 +202,10 @@ export function DashboardView() {
         {/* Card 2: Bed Occupancy */}
         <Card className="border-border/80 shadow-xs">
           <CardHeader className="p-4 pb-2 flex flex-row items-center justify-between space-y-0">
-            <CardTitle className="text-xs font-medium text-muted-foreground">
-              Bed Occupancy
+            <CardTitle className="text-xs font-medium text-muted-foreground flex items-center justify-between w-full">
+              <span>Bed Occupancy</span>
+              <ProvenanceBadge origin="simulated" size="sm" />
             </CardTitle>
-            <div className="p-1.5 rounded-md bg-blue-500/10 text-blue-500">
-              <Bed className="w-4 h-4" />
-            </div>
           </CardHeader>
           <CardContent className="p-4 pt-1">
             <div className="flex items-baseline gap-2">
@@ -218,12 +226,10 @@ export function DashboardView() {
         {/* Card 3: Staff Attendance */}
         <Card className="border-border/80 shadow-xs">
           <CardHeader className="p-4 pb-2 flex flex-row items-center justify-between space-y-0">
-            <CardTitle className="text-xs font-medium text-muted-foreground">
-              Staff Attendance
+            <CardTitle className="text-xs font-medium text-muted-foreground flex items-center justify-between w-full">
+              <span>Staff Attendance</span>
+              <ProvenanceBadge origin="simulated" size="sm" />
             </CardTitle>
-            <div className="p-1.5 rounded-md bg-emerald-500/10 text-emerald-500">
-              <Users className="w-4 h-4" />
-            </div>
           </CardHeader>
           <CardContent className="p-4 pt-1">
             <div className="flex items-baseline gap-2">
@@ -242,12 +248,10 @@ export function DashboardView() {
         {/* Card 4: Active Alerts */}
         <Card className="border-border/80 shadow-xs">
           <CardHeader className="p-4 pb-2 flex flex-row items-center justify-between space-y-0">
-            <CardTitle className="text-xs font-medium text-muted-foreground">
-              Early Warning Alerts
+            <CardTitle className="text-xs font-medium text-muted-foreground flex items-center justify-between w-full">
+              <span>Early Warning Alerts</span>
+              <ProvenanceBadge origin="derived" size="sm" />
             </CardTitle>
-            <div className="p-1.5 rounded-md bg-amber-500/10 text-amber-500">
-              <ShieldAlert className="w-4 h-4" />
-            </div>
           </CardHeader>
           <CardContent className="p-4 pt-1">
             <div className="flex items-baseline gap-2">
@@ -270,12 +274,10 @@ export function DashboardView() {
         {/* Card 5: Resilience Score */}
         <Card className="border-border/80 shadow-xs bg-linear-to-br from-card to-primary/5">
           <CardHeader className="p-4 pb-2 flex flex-row items-center justify-between space-y-0">
-            <CardTitle className="text-xs font-medium text-muted-foreground">
-              Resilience Score
+            <CardTitle className="text-xs font-medium text-muted-foreground flex items-center justify-between w-full">
+              <span>Resilience Score</span>
+              <ProvenanceBadge origin="derived" size="sm" />
             </CardTitle>
-            <div className="p-1.5 rounded-md bg-primary/10 text-primary">
-              <Activity className="w-4 h-4" />
-            </div>
           </CardHeader>
           <CardContent className="p-4 pt-1">
             <div className="flex items-baseline gap-2">
@@ -303,8 +305,9 @@ export function DashboardView() {
           <CardHeader className="p-4 pb-2">
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-sm font-semibold">
-                  Outpatient Footfall by Syndrome (Last 14 Days)
+                <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                  <span>Outpatient Footfall by Syndrome (Last 14 Days)</span>
+                  <ProvenanceBadge origin="simulated" size="sm" />
                 </CardTitle>
                 <CardDescription className="text-xs">
                   Monsoon diarrhea & vector-borne fever surge detection
@@ -360,8 +363,9 @@ export function DashboardView() {
           <CardHeader className="p-4 pb-2">
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-sm font-semibold">
-                  Critical Medicine Consumption Velocity
+                <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                  <span>Critical Medicine Consumption Velocity</span>
+                  <ProvenanceBadge origin="simulated" size="sm" />
                 </CardTitle>
                 <CardDescription className="text-xs">
                   ORS Sachets vs Antimalarials (AL) demand spike
@@ -506,6 +510,7 @@ export function DashboardView() {
                   <Badge variant="outline" className="text-[10px] font-mono border-primary/30 text-primary">
                     Gemini Copilot
                   </Badge>
+                  <ProvenanceBadge origin="derived" size="sm" />
                 </CardTitle>
                 <CardDescription className="text-xs">
                   {briefing.district} • {briefing.date}

@@ -74,6 +74,16 @@
 - **Decision:** Extract and store seasonal epidemiology parameters (diarrhea monsoon $2.4\times$ multiplier with 4-day lag, vector fever $2.8\times$ multiplier with 14-day lag, ARI winter $1.6\times$ multiplier) from IDSP and NVBDCP surveillance bulletins as calibration parameters (`data_origin: 'real'`). Clearly document that these represent macro-surveillance calibration priors, never claiming patient-level or PHC-level ground truth.
 - **Rationale:** Real facility-level clinical registries are strictly confidential to prevent patient re-identification. Using published epidemiological priors honest-scales the operational simulator without data fabrication.
 
+### ADR-017: Multi-Source Ingestion Adapters & Comprehensive Provenance Transparency
+- **Decision:** Define a pluggable `IngestionAdapter` interface with four implementations:
+  1. `CsvUploadAdapter`: Validates and loads bulk facility CSVs (`stock`, `beds`, `staff`, `footfall`) with strict schema validation and error reporting (`data_origin: 'real'`).
+  2. `WebhookAdapter`: Signed REST gateway verifying HMAC-SHA256 signatures for IoT cold-chain/dispensary pushes (`data_origin: 'real'`).
+  3. `HmisAdapter`: Standard ETL mapping stub for National Health Mission (NHM) monthly facility reports (`data_origin: 'real'`).
+  4. `SimulatorAdapter`: Honest fallback simulator calibrated on Census 2011 catchments, Open-Meteo rainfall, and NLEM drug schedules (`data_origin: 'simulated'`).
+  Deploy a persistent `<SimulatedFeedBanner />` across the application, display granular `<ProvenanceBadge origin="real"|"derived"|"simulated" />` tags on every metric, chart, and map layer, and create a dedicated `/provenance` audit dashboard reporting table-by-table coverage (% real / derived / simulated).
+- **Rationale:** Establishes rigorous data lineage and compliance with hackathon ethics. Any real facility telemetry instantly upgrades the active origin to `real` while simulated baselines are openly declared without ambiguity.
+
+
 
 
 

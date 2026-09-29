@@ -59,10 +59,15 @@ export function AppHeader() {
             <span className="hidden md:inline">SSE LIVE</span>
           </div>
 
-          {/* Synthetic Data Label */}
-          <Badge variant="secondary" className="hidden lg:inline-flex text-[10px] h-5 font-mono px-2 uppercase tracking-wider bg-muted/80 text-muted-foreground border border-border">
-            SYNTHETIC DATA
-          </Badge>
+          {/* Provenance Audit Link */}
+          <a
+            href="/provenance"
+            className="hidden lg:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 text-[10px] font-mono tracking-tight hover:bg-emerald-500/20 transition-colors"
+            title="View Data Provenance Breakdown (% Real, Derived, Simulated)"
+          >
+            <ShieldCheck className="w-3 h-3 text-emerald-500" />
+            <span>DATA PROVENANCE</span>
+          </a>
         </div>
 
         {/* Right Switchers and Controls */}

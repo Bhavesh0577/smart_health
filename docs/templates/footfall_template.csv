@@ -1,0 +1,13 @@
+# PHC Resilience Grid - Patient Footfall & Syndromic Surveillance Template
+# Format: RFC 4180 CSV, UTF-8 encoded
+# Required columns: time (ISO-8601 or YYYY-MM-DD), phc_id, opd_count, symptom_category
+# Valid symptom categories: fever, diarrhea, respiratory, general, maternal, trauma
+time,phc_id,opd_count,symptom_category
+2026-09-29,in_kar_bengaluru_nelamangala,28,fever
+2026-09-29,in_kar_bengaluru_nelamangala,22,diarrhea
+2026-09-29,in_kar_bengaluru_nelamangala,14,respiratory
+2026-09-29,in_kar_bengaluru_nelamangala,18,general
+2026-09-29,in_kar_kalaburagi_aland,45,fever
+2026-09-29,in_kar_kalaburagi_aland,35,diarrhea
+2026-09-29,in_kar_dk_ullal,38,fever
+2026-09-29,in_kar_dk_ullal,32,diarrhea
