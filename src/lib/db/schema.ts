@@ -164,3 +164,6 @@ export function getTablesForNode(nodeKey: string) {
   }
   return inKarnatakaTables;
 }
+
+export const getNodeTables = getTablesForNode;
+

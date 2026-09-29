@@ -3,9 +3,11 @@ import { getDb } from "@/lib/db";
 import { simulationStates } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
+import { injectEmergencyOutbreakCluster, resetEmergencyOutbreakCluster } from "@/lib/services/emergency-service";
 
 const emergencySchema = z.object({
   action: z.enum(["trigger", "reset", "status"]),
+  node: z.string().optional().default("node_in_karnataka"),
 });
 
 export async function GET() {
@@ -24,38 +26,28 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { action } = emergencySchema.parse(body);
-    const db = getDb();
+    const { action, node } = emergencySchema.parse(body);
 
-    const isEmergency = action === "trigger";
-
-    await db
-      .insert(simulationStates)
-      .values({
-        id: "active_state",
-        isEmergencyActive: isEmergency,
-        roadClosureActive: isEmergency,
-        staffAbsentPercent: isEmergency ? 20 : 0,
-        monsoonIntensity: isEmergency ? 2.5 : 1.0,
-        updatedAt: new Date(),
-      })
-      .onConflictDoUpdate({
-        target: simulationStates.id,
-        set: {
-          isEmergencyActive: isEmergency,
-          roadClosureActive: isEmergency,
-          staffAbsentPercent: isEmergency ? 20 : 0,
-          monsoonIntensity: isEmergency ? 2.5 : 1.0,
-          updatedAt: new Date(),
-        },
+    if (action === "trigger") {
+      const result = await injectEmergencyOutbreakCluster(node);
+      return NextResponse.json({
+        success: true,
+        action,
+        isEmergencyActive: true,
+        cluster: result,
       });
+    } else if (action === "reset") {
+      await resetEmergencyOutbreakCluster(node);
+      return NextResponse.json({
+        success: true,
+        action,
+        isEmergencyActive: false,
+      });
+    }
 
-    return NextResponse.json({
-      success: true,
-      action,
-      isEmergencyActive: isEmergency,
-    });
+    return NextResponse.json({ success: true, action: "status" });
   } catch (error) {
     return NextResponse.json({ success: false, error: String(error) }, { status: 400 });
   }
 }
+

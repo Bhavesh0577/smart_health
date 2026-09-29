@@ -1,6 +1,7 @@
 import { getDb } from "@/lib/db";
 import { getTablesForNode } from "@/lib/db/schema";
 import { eq, desc } from "drizzle-orm";
+import { computeResilienceScore } from "@/lib/services/resilience-service";
 
 export interface PhcSummary {
   id: string;
@@ -146,6 +147,13 @@ export async function getAllPhcs(nodeId = "node_in_karnataka", filterDistrict?: 
       riskLevel = "warning";
     }
 
+    const dynamicResilience = computeResilienceScore(
+      minDays,
+      bedOccPercent / 100,
+      staffAttPercent / 100,
+      0
+    ).compositeScore;
+
     return {
       id: p.id,
       name: p.name,
@@ -157,7 +165,7 @@ export async function getAllPhcs(nodeId = "node_in_karnataka", filterDistrict?: 
       type: p.type,
       bedCapacity: p.bedCapacity,
       targetPopulation: p.targetPopulation,
-      resilienceScore: Math.round(p.resilienceScore * 10) / 10,
+      resilienceScore: dynamicResilience,
       occupiedBeds: b.occupiedBeds,
       bedOccupancyPercent: bedOccPercent,
       availableOxygenBeds: b.availableOxygenBeds,
@@ -321,6 +329,13 @@ export async function getPhcDetail(nodeId = "node_in_karnataka", phcId: string):
     riskLevel = "warning";
   }
 
+  const dynamicResilience = computeResilienceScore(
+    minDaysOfCover,
+    bedOccPercent / 100,
+    staffAttPercent / 100,
+    0
+  ).compositeScore;
+
   return {
     id: p.id,
     name: p.name,
@@ -332,7 +347,7 @@ export async function getPhcDetail(nodeId = "node_in_karnataka", phcId: string):
     type: p.type,
     bedCapacity: p.bedCapacity,
     targetPopulation: p.targetPopulation,
-    resilienceScore: Math.round(p.resilienceScore * 10) / 10,
+    resilienceScore: dynamicResilience,
     occupiedBeds: latestBed.occupiedBeds,
     bedOccupancyPercent: bedOccPercent,
     availableOxygenBeds: latestBed.availableOxygenBeds,

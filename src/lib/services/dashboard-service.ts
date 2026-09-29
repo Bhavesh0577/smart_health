@@ -1,6 +1,7 @@
 import { getDb } from "@/lib/db";
 import { getTablesForNode, simulationStates } from "@/lib/db/schema";
 import { eq, desc, and, sql } from "drizzle-orm";
+import { computeResilienceScore } from "@/lib/services/resilience-service";
 
 export interface DashboardStats {
   nodeId: string;
@@ -190,7 +191,16 @@ export async function getDashboardStats(nodeId = "node_in_karnataka", filterDist
   const activeAlertsCount = filteredAlerts.length;
   const criticalAlertsCount = filteredAlerts.filter((a: any) => a.severity === "critical").length;
 
-  // 6. Resilience Score Average
+  // 6. Compute Dynamic Resilience Scores per PHC
+  for (const p of filteredPhcs) {
+    const b = latestBedMap.get(p.id);
+    const s = latestStaffMap.get(p.id);
+    const days = phcMinCover.get(p.id) ?? 20;
+    const occ = b && b.totalBeds > 0 ? b.occupiedBeds / b.totalBeds : 0.65;
+    const att = s && s.requiredStaff > 0 ? s.staffOnDuty / s.requiredStaff : 0.85;
+    p.resilienceScore = computeResilienceScore(days, occ, att, 0).compositeScore;
+  }
+
   const totalScore = filteredPhcs.reduce((acc: number, p: any) => acc + (p.resilienceScore || 75), 0);
   const averageResilienceScore = Math.round((totalScore / totalPhcs) * 10) / 10;
 
