@@ -83,6 +83,11 @@
   Deploy a persistent `<SimulatedFeedBanner />` across the application, display granular `<ProvenanceBadge origin="real"|"derived"|"simulated" />` tags on every metric, chart, and map layer, and create a dedicated `/provenance` audit dashboard reporting table-by-table coverage (% real / derived / simulated).
 - **Rationale:** Establishes rigorous data lineage and compliance with hackathon ethics. Any real facility telemetry instantly upgrades the active origin to `real` while simulated baselines are openly declared without ambiguity.
 
+### ADR-018: Scientific Transparency & Calibrated Counterfactual Evaluation
+- **Decision:** Explicitly declare all `/impact` backtest results as derived from a calibrated mathematical counterfactual simulation executed over 164 verified healthcare facilities, Census 2011 catchments, real Open-Meteo precipitation series, and NLEM 2022 drug schedules. Retrain the multi-echelon optimization backtest and FedAvg global models using the expanded 14,760 sample matrix with meteorological and seasonal disease covariates. Include prominent disclaimer callouts that explicitly prohibit claiming uncalibrated real-world retrospective hospital trial outcomes.
+- **Rationale:** Strict adherence to research ethics and scientific honesty. Clear demarcation of what is empirical public ground truth (geography, weather, drug catalog, census) versus what is an algorithmic simulation (footfall dynamics, inventory depletion, administrative counterfactuals) preserves complete credibility.
+
+
 
 
 

@@ -37,6 +37,7 @@ import {
 } from "recharts";
 import { toast } from "sonner";
 import type { FederationRoundResult } from "@/lib/services/federation-service";
+import { ProvenanceBadge } from "@/components/ui/provenance-badge";
 
 export default function FederationPage() {
   const { selectedNode } = useApp();
@@ -100,19 +101,19 @@ export default function FederationPage() {
   // Comparison data: Local vs Federated MAPE
   const comparisonData = [
     {
-      name: "India (Karnataka)",
+      name: "India (164 PHCs)",
       localMAPE: 18.2,
       federatedMAPE: latestResult?.global_mape ? Math.round(latestResult.global_mape * 0.95 * 10) / 10 : 8.8,
       reduction: "51%",
     },
     {
-      name: "Brazil (Bahia)",
+      name: "Brazil (7 UBS)",
       localMAPE: 24.5,
       federatedMAPE: latestResult?.global_mape ? Math.round(latestResult.global_mape * 1.05 * 10) / 10 : 9.8,
       reduction: "60%",
     },
     {
-      name: "South Africa (KZN)",
+      name: "South Africa (6 Clinics)",
       localMAPE: 26.1,
       federatedMAPE: latestResult?.global_mape ? Math.round(latestResult.global_mape * 1.08 * 10) / 10 : 10.2,
       reduction: "61%",
@@ -142,9 +143,10 @@ export default function FederationPage() {
                 <Badge className="bg-primary text-primary-foreground text-xs font-mono">
                   FedAvg + ε-Differential Privacy
                 </Badge>
+                <ProvenanceBadge origin="derived" size="sm" />
               </div>
               <p className="text-xs text-muted-foreground mt-0.5">
-                Collaborative multi-national predictive modeling across India, Brazil, and South Africa with zero raw health data leakage
+                Collaborative multi-national predictive modeling across India (164 PHCs), Brazil (7 UBS), and South Africa (6 Clinics) with zero raw health data leakage
               </p>
             </div>
           </div>

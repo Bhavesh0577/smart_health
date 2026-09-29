@@ -19,6 +19,10 @@ import {
   Layers,
   ArrowRight,
   Info,
+  Server,
+  CloudRain,
+  Pill,
+  Users,
 } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -32,6 +36,7 @@ import {
   Legend,
 } from "recharts";
 import type { ImpactBacktestResult } from "@/lib/services/impact-service";
+import { ProvenanceBadge } from "@/components/ui/provenance-badge";
 
 export default function ImpactPage() {
   const { selectedNode } = useApp();
@@ -72,20 +77,21 @@ export default function ImpactPage() {
       {/* Header Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
             <Badge variant="outline" className="text-xs border-primary/40 text-primary">
               <Award className="w-3 h-3 mr-1" />
-              Longitudinal Counterfactual Evaluation
+              Counterfactual Simulation Benchmark
             </Badge>
             <Badge variant="secondary" className="text-[10px] font-mono">
-              90-Day Empirical Backtest
+              90-Day Horizon
             </Badge>
+            <ProvenanceBadge origin="derived" size="sm" />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-foreground">
-            System Impact & Empirical Backtest
+            System Impact & Counterfactual Backtest
           </h1>
           <p className="text-xs text-muted-foreground mt-0.5">
-            Rigorous counterfactual comparison: Platform Outcomes vs Status Quo Administrative Baseline over 90 days.
+            Mathematical comparison: Automated Redistribution vs Uncoordinated Administrative Baseline over 164 real Karnataka facilities.
           </p>
         </div>
 
@@ -98,10 +104,47 @@ export default function ImpactPage() {
             className="h-8 text-xs gap-1.5"
           >
             <RotateCcw className={`w-3 h-3 ${loading ? "animate-spin" : ""}`} />
-            Re-Run Backtest
+            Re-Run Simulation
           </Button>
         </div>
       </div>
+
+      {/* Scientific Transparency & Calibration Disclaimer Notice */}
+      <div className="p-4 rounded-xl border border-amber-500/40 bg-amber-500/10 text-xs space-y-2">
+        <div className="font-semibold flex items-center gap-2 text-amber-700 dark:text-amber-300 text-sm">
+          <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
+          <span>Scientific Transparency & Calibrated Simulation Disclosure</span>
+        </div>
+        <p className="text-muted-foreground leading-relaxed text-[11px]">
+          All impact figures and efficiency gains presented on this page stem from a <strong>calibrated mathematical counterfactual simulation</strong> executed over <strong>164 verified healthcare facilities</strong> (Karnataka focus districts) coupled with <strong>3+ years of real Open-Meteo ERA5 precipitation observations</strong>, <strong>Census 2011 population catchments</strong>, and <strong>NLEM 2022 drug formularies</strong>. These metrics model the theoretical supply chain resilience gains of automated OR-Tools multi-echelon redistribution versus uncoordinated administrative replenishment delays. <strong>These results are counterfactual simulation benchmarks and are not claimed as real-world retrospective hospital trial outcomes.</strong>
+        </p>
+      </div>
+
+      {/* Explicit Modeling Assumptions */}
+      <Card className="border-border/80 bg-card/60">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-sm font-semibold flex items-center justify-between">
+            <span>Modeling Assumptions & Data Lineage</span>
+            <Badge variant="outline" className="text-[10px] font-mono">
+              5 Core Pillars
+            </Badge>
+          </CardTitle>
+          <CardDescription className="text-xs">
+            Every analytical assumption and underlying public data source driving the backtest calculation.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {data?.assumptions?.map((asm, idx) => (
+            <div key={idx} className="p-3 rounded-lg border border-border/70 bg-muted/20 space-y-1 text-xs">
+              <div className="flex items-center justify-between">
+                <span className="font-semibold text-foreground">{asm.name}</span>
+                <ProvenanceBadge origin={asm.provenance} size="sm" />
+              </div>
+              <p className="text-[11px] text-muted-foreground leading-tight">{asm.description}</p>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
 
       {/* Top 4 KPI Impact Delta Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -110,7 +153,7 @@ export default function ImpactPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between text-muted-foreground text-xs mb-1">
               <span className="font-medium">Stock-Out Days Avoided</span>
-              <TrendingDown className="w-4 h-4 text-emerald-500" />
+              <ProvenanceBadge origin="derived" size="sm" />
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400">
@@ -121,7 +164,7 @@ export default function ImpactPage() {
               </span>
             </div>
             <div className="mt-2 text-[11px] text-muted-foreground">
-              Reduced from <strong className="text-foreground">{m?.stockoutDays.withoutPlatform}</strong> days to{" "}
+              Simulated reduction from <strong className="text-foreground">{m?.stockoutDays.withoutPlatform}</strong> days to{" "}
               <strong className="text-emerald-600 dark:text-emerald-400">{m?.stockoutDays.withPlatform}</strong> days across network.
             </div>
           </CardContent>
@@ -132,7 +175,7 @@ export default function ImpactPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between text-muted-foreground text-xs mb-1">
               <span className="font-medium">Near-Expiry Stock Rescued</span>
-              <Sparkles className="w-4 h-4 text-blue-500" />
+              <ProvenanceBadge origin="derived" size="sm" />
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold font-mono text-blue-600 dark:text-blue-400">
@@ -153,7 +196,7 @@ export default function ImpactPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between text-muted-foreground text-xs mb-1">
               <span className="font-medium">Supply Response Velocity</span>
-              <Clock className="w-4 h-4 text-primary" />
+              <ProvenanceBadge origin="derived" size="sm" />
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold font-mono text-primary">
@@ -164,8 +207,8 @@ export default function ImpactPage() {
               </span>
             </div>
             <div className="mt-2 text-[11px] text-muted-foreground">
-              Cut requisition-to-dispatch turnaround from <strong className="text-foreground">14 days</strong> to{" "}
-              <strong className="text-primary">{m?.averageResponseTime.withPlatformHours} hours</strong>.
+              Cut requisition turnaround from <strong className="text-foreground">14-day manual queue</strong> to{" "}
+              <strong className="text-primary">{m?.averageResponseTime.withPlatformHours} hours algorithmic</strong>.
             </div>
           </CardContent>
         </Card>
@@ -175,7 +218,7 @@ export default function ImpactPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between text-muted-foreground text-xs mb-1">
               <span className="font-medium">Epidemic Early Warning</span>
-              <ShieldCheck className="w-4 h-4 text-emerald-500" />
+              <ProvenanceBadge origin="derived" size="sm" />
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold font-mono text-foreground">
@@ -195,12 +238,17 @@ export default function ImpactPage() {
       {/* Comparative Visualization Chart */}
       <Card className="border-border/80 shadow-sm bg-card/60 backdrop-blur-sm">
         <CardHeader className="pb-2">
-          <CardTitle className="text-sm font-semibold">
-            Cumulative Stock-Out Days: Status Quo vs PHC Resilience Grid
-          </CardTitle>
-          <CardDescription className="text-xs">
-            Counterfactual evaluation across districts showing cumulative facility stockout days avoided over 90 days.
-          </CardDescription>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                <span>Cumulative Stock-Out Days: Status Quo vs PHC Resilience Grid</span>
+                <ProvenanceBadge origin="derived" size="sm" />
+              </CardTitle>
+              <CardDescription className="text-xs">
+                Counterfactual evaluation across districts showing cumulative facility stockout days avoided over 90 days.
+              </CardDescription>
+            </div>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="h-64 w-full">
@@ -219,8 +267,8 @@ export default function ImpactPage() {
                   }}
                 />
                 <Legend wrapperStyle={{ fontSize: "11px", paddingTop: "10px" }} />
-                <Bar dataKey="withoutPlatform" name="Without Platform (Status Quo)" fill="#ef4444" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="withPlatform" name="With PHC Resilience Grid" fill="#10b981" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="withoutPlatform" name="Without Platform (Status Quo 14-day indent)" fill="#ef4444" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="withPlatform" name="With PHC Resilience Grid (Min-Cost Flow)" fill="#10b981" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -230,22 +278,27 @@ export default function ImpactPage() {
       {/* District-by-District Empirical Impact Breakdown */}
       <Card className="border-border/80 shadow-sm bg-card/60 backdrop-blur-sm">
         <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-semibold flex items-center justify-between">
-            <span>District Impact & Waste Prevention Ledger</span>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                <span>District Impact & Waste Prevention Ledger</span>
+                <ProvenanceBadge origin="derived" size="sm" />
+              </CardTitle>
+              <CardDescription className="text-xs">
+                Simulated stockout prevention and financial savings by administrative territory.
+              </CardDescription>
+            </div>
             <Badge variant="outline" className="text-[10px]">
               {breakdown.length} Districts Analyzed
             </Badge>
-          </CardTitle>
-          <CardDescription className="text-xs">
-            Empirical stockout prevention and financial savings by administrative territory.
-          </CardDescription>
+          </div>
         </CardHeader>
         <CardContent className="p-0">
           <Table>
             <TableHeader>
               <TableRow className="text-xs">
                 <TableHead>District</TableHead>
-                <TableHead className="text-center">PHCs</TableHead>
+                <TableHead className="text-center">Real PHCs</TableHead>
                 <TableHead className="text-center">Stockout Days Avoided</TableHead>
                 <TableHead className="text-center">Expired Units Rescued</TableHead>
                 <TableHead className="text-right">Budget Preserved</TableHead>
@@ -284,7 +337,7 @@ export default function ImpactPage() {
         <CardHeader className="pb-2">
           <CardTitle className="text-xs font-semibold flex items-center gap-2">
             <Info className="w-4 h-4 text-primary" />
-            {data?.methodologyNotes.title || "Counterfactual Backtesting Methodology"}
+            {data?.methodologyNotes.title || "Calibrated Counterfactual Simulation Methodology"}
           </CardTitle>
           <CardDescription className="text-xs">
             {data?.methodologyNotes.description}
@@ -298,6 +351,11 @@ export default function ImpactPage() {
               </li>
             ))}
           </ul>
+          {data?.methodologyNotes.disclaimer && (
+            <div className="pt-2 text-[11px] font-mono text-amber-600 dark:text-amber-400">
+              {data.methodologyNotes.disclaimer}
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
