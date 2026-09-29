@@ -66,6 +66,11 @@
 - **Decision:** Ingest 3+ years of daily meteorological observations (2023-2026, 1,368 daily records) plus 16-day live forecasts from Open-Meteo into sovereign `weather_daily` tables (`data_origin: 'real'`). Pipe district-specific real rainfall predictions directly into the Ridge demand forecasting pipeline and outbreak risk detector (`/api/forecast` and `/api/weather`), replacing synthetic weather assumptions with real meteorological features.
 - **Rationale:** Precipitation surges (>15mm/day) directly drive epidemiological lags in acute diarrheal diseases and vector-borne febrile presentations. Incorporating real weather yields genuine forward-looking supply chain early warnings.
 
+### ADR-015: NLEM 2022 Primary Care Catalog & Census 2011 Catchment Derivation
+- **Decision:** Ingest the Primary Care essential medicine subset directly from the National List of Essential Medicines (NLEM 2022, MoHFW), recording official gazette page numbers, therapeutic categories, and level of care (`data_origin: 'real'`). Compute facility catchment populations derived from the Census of India 2011 Primary Census Abstract ($\text{Catchment} = \text{District Population} / \text{PHC Count}$, `data_origin: 'derived'`).
+- **Rationale:** Grounding drug formulations and clinical care thresholds in the official national pharmacopoeia prevents arbitrary medicine schemas. Catchment population derivation establishes an authoritative demographic basis for footfall and consumption scaling.
+
+
 
 
 

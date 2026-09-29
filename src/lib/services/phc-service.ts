@@ -43,6 +43,10 @@ export interface PhcDetail extends PhcSummary {
     expiryDate: string;
     isNearExpiry: boolean;
     source: string;
+    levelOfCare?: string;
+    sourcePage?: number;
+    medicineDataOrigin?: string;
+    inventoryDataOrigin?: string;
   }>;
   bedHistory: Array<{
     date: string;
@@ -237,6 +241,10 @@ export async function getPhcDetail(nodeId = "node_in_karnataka", phcId: string):
       expiryDate: new Date(s.expiryDate).toISOString().substring(0, 10),
       isNearExpiry,
       source: s.source,
+      levelOfCare: med.levelOfCare || "Primary",
+      sourcePage: med.sourcePage || 1,
+      medicineDataOrigin: med.dataOrigin || "real",
+      inventoryDataOrigin: s.dataOrigin || "simulated",
     };
   });
 
