@@ -5,7 +5,13 @@ import { MainLayout } from "@/components/layout/main-layout";
 export const metadata: Metadata = {
   title: "PHC Resilience Grid | BRICS Track 3: Smart Health & Supply Chain",
   description: "Federated AI platform for national-scale health resource and supply chain management across Primary Health Centres.",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/icons/icon.svg",
+    apple: "/icons/icon.svg",
+  },
 };
+
 
 export default function RootLayout({
   children,

@@ -1,0 +1,30 @@
+{
+  "name": "PHC Resilience Grid",
+  "short_name": "PHC Grid",
+  "description": "Federated AI platform for national-scale health resource and supply chain resilience across Primary Health Centres.",
+  "start_url": "/phc",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#0284c7",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
