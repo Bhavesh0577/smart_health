@@ -22,6 +22,8 @@ import {
   Layers,
   ArrowLeftRight,
 } from "lucide-react";
+import { ForecastChart } from "@/components/forecast/forecast-chart";
+import type { ForecastResult } from "@/lib/ml-client";
 import {
   ResponsiveContainer,
   AreaChart,
@@ -65,6 +67,24 @@ export default function PhcDetailPage() {
   useEffect(() => {
     if (id) fetchDetail();
   }, [id, selectedNode]);
+
+  const [forecast, setForecast] = useState<ForecastResult | null>(null);
+  const [selectedMedForForecast, setSelectedMedForForecast] = useState<string>("");
+
+  useEffect(() => {
+    if (detail && detail.stockInventory.length > 0) {
+      const sorted = [...detail.stockInventory].sort((a, b) => a.daysOfCover - b.daysOfCover);
+      const targetMed = selectedMedForForecast || sorted[0].medicineId;
+      setSelectedMedForForecast(targetMed);
+
+      fetch(`/api/forecast?phcId=${id}&medicineId=${targetMed}&node=${selectedNode}&horizon=14`)
+        .then((r) => r.json())
+        .then((json) => {
+          if (json.success) setForecast(json.data);
+        })
+        .catch(console.error);
+    }
+  }, [detail, selectedMedForForecast, id, selectedNode]);
 
   const handleResolveAlert = (alertTitle: string) => {
     toast.success("Alert Acknowledged & Resolved", {
@@ -279,6 +299,37 @@ export default function PhcDetailPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* AI Demand Forecast & Stockout Trajectory */}
+      {forecast && (
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+              <Activity className="w-3.5 h-3.5 text-primary" />
+              AI 14-Day Demand Forecast & Depletion Projection
+            </h3>
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] text-muted-foreground">Medicine:</span>
+              <select
+                value={selectedMedForForecast}
+                onChange={(e) => setSelectedMedForForecast(e.target.value)}
+                className="h-7 px-2 rounded border border-border bg-background text-xs font-medium text-foreground focus:outline-hidden"
+              >
+                {detail.stockInventory.map((item) => (
+                  <option key={item.medicineId} value={item.medicineId}>
+                    {item.medicineName} ({item.daysOfCover}d cover)
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <ForecastChart
+            forecast={forecast}
+            medicineName={detail.stockInventory.find((i) => i.medicineId === selectedMedForForecast)?.medicineName}
+            facilityName={detail.name}
+          />
+        </div>
+      )}
 
       {/* Longitudinal Surveillance Charts (Last 30 Days) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

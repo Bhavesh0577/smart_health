@@ -17,6 +17,7 @@ import {
   BarChart3,
   ShieldCheck,
   ChevronRight,
+  TrendingUp,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -52,6 +53,11 @@ const NAV_ITEMS: { category: string; items: NavItem[] }[] = [
   {
     category: "Resilience & AI",
     items: [
+      {
+        title: "Demand Forecasting",
+        href: "/forecasting",
+        icon: TrendingUp,
+      },
       {
         title: "Early Warning Alerts",
         href: "/alerts",
