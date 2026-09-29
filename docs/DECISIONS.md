@@ -62,6 +62,11 @@
 - **Decision:** Ingest 164 verified healthcare facilities spanning all taluks of the 5 focus districts (Bengaluru Urban, Belagavi, Kalaburagi, Mysuru, Dakshina Kannada) with real geographic coordinates (`data_origin: 'real'`), cross-referenced with parliamentary ground-truth (Lok Sabha Unstarred Question 1924, 6 Dec 2024, Annexure I). Reconcile rural functional PHC/CHC numbers alongside NUHM Urban PHCs in `docs/RECONCILIATION.md`, and maintain international node facilities (Brazil Bahia CNES/DATASUS, South Africa KZN SAHIS) in isolated sovereign schemas (`node_br_bahia`, `node_za_kzn`).
 - **Rationale:** Replaces arbitrary sampling with full real spatial coverage across taluks, providing zero hallucinated facilities and strict alignment with official health statistics.
 
+### ADR-014: Real Meteorological Feature Ingestion & Epidemiological Demand Forecaster
+- **Decision:** Ingest 3+ years of daily meteorological observations (2023-2026, 1,368 daily records) plus 16-day live forecasts from Open-Meteo into sovereign `weather_daily` tables (`data_origin: 'real'`). Pipe district-specific real rainfall predictions directly into the Ridge demand forecasting pipeline and outbreak risk detector (`/api/forecast` and `/api/weather`), replacing synthetic weather assumptions with real meteorological features.
+- **Rationale:** Precipitation surges (>15mm/day) directly drive epidemiological lags in acute diarrheal diseases and vector-borne febrile presentations. Incorporating real weather yields genuine forward-looking supply chain early warnings.
+
+
 
 
 

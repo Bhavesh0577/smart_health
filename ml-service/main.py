@@ -143,8 +143,11 @@ def generate_forecast(req: ForecastRequest):
         doy = target_dt.timetuple().tm_yday
         sin_doy = math.sin(2 * math.pi * doy / 365.25)
         cos_doy = math.cos(2 * math.pi * doy / 365.25)
-        is_weekend = 1.0 if target_dt.weekday() >= 5 else 0.0
-        rainfall = 20.0 if (target_dt.month in [6, 7, 8, 9] or req.is_emergency) else 2.0
+        # Real meteorological feature from Open-Meteo
+        if req.rainfall_forecast and (h - 1) < len(req.rainfall_forecast):
+            rainfall = float(req.rainfall_forecast[h - 1])
+        else:
+            rainfall = 20.0 if (target_dt.month in [6, 7, 8, 9] or req.is_emergency) else 2.0
         emergency_boost = 2.0 if req.is_emergency else 1.0
 
         feat = np.array([[
