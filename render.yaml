@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: phc-ml-service
+    runtime: docker
+    dockerfilePath: ./ml-service/Dockerfile
+    dockerContext: ./ml-service
+    plan: free
+    region: oregon
+    envVars:
+      - key: PORT
+        value: 10000
+
+databases:
+  - name: phc-resilience-db
+    databaseName: smart_health
+    user: postgres
+    plan: free
+    region: oregon
