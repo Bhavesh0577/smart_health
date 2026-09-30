@@ -282,7 +282,7 @@ export async function loadData() {
           r.id,
           r.round,
           5 - r.round,
-          JSON.stringify(["node_in_karnataka", "node_br_bahia", "node_za_kzn"]),
+          JSON.stringify(["node_in_karnataka"]),
           r.loss,
           r.mape,
           r.eps,
@@ -314,20 +314,6 @@ export async function loadData() {
         state: "Karnataka",
         facilities: karFacilities,
         weatherDistricts: ["Bengaluru Urban", "Belagavi", "Kalaburagi", "Mysuru", "Dakshina Kannada"],
-      },
-      {
-        schema: "node_br_bahia",
-        country: "Brazil",
-        state: "Bahia",
-        facilities: bahiaFacilities,
-        weatherDistricts: ["Salvador"],
-      },
-      {
-        schema: "node_za_kzn",
-        country: "South Africa",
-        state: "KwaZulu-Natal",
-        facilities: kznFacilities,
-        weatherDistricts: ["eThekwini"],
       },
     ];
 

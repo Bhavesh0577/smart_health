@@ -412,8 +412,7 @@ export default function FederationPage() {
                     <TableCell>
                       <div className="flex items-center gap-1.5 flex-wrap">
                         <Badge variant="outline" className="text-[9px] h-4 px-1">🇮🇳 IN-Karnataka</Badge>
-                        <Badge variant="outline" className="text-[9px] h-4 px-1">🇧🇷 BR-Bahia</Badge>
-                        <Badge variant="outline" className="text-[9px] h-4 px-1">🇿🇦 ZA-KZN</Badge>
+                        <Badge variant="outline" className="text-[9px] h-4 px-1 border-primary/40 text-primary">5 District Hubs</Badge>
                       </div>
                     </TableCell>
                     <TableCell className="text-center font-mono">

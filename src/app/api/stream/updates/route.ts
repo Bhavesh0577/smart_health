@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
           const telemetryUpdate = {
             type: "HEARTBEAT",
             timestamp: new Date().toISOString(),
-            activeNodes: ["node_in_karnataka", "node_br_bahia", "node_za_kzn"],
+            activeNodes: ["node_in_karnataka"],
             syncStatus: "OPTIMAL",
           };
           controller.enqueue(

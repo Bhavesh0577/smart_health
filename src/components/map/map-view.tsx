@@ -23,8 +23,6 @@ import { ProvenanceBadge } from "@/components/ui/provenance-badge";
 
 const NODE_CENTERS: Record<string, { center: [number, number]; zoom: number }> = {
   node_in_karnataka: { center: [75.8, 14.5], zoom: 6.8 },
-  node_br_bahia: { center: [-39.5, -13.0], zoom: 6.2 },
-  node_za_kzn: { center: [30.5, -29.0], zoom: 7.0 },
 };
 
 export function MapView() {
