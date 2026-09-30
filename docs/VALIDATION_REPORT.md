@@ -1,5 +1,5 @@
 # Data Integrity & Provenance Validation Audit Report
-*Generated: 2026-09-30T09:59:34.905Z*
+*Generated: 2026-09-30T10:10:33.267Z*
 
 ## 1. Table-by-Table Provenance Breakdown
 
@@ -8,11 +8,11 @@
 | `node_in_karnataka` | `phcs` | 164 | 100.0% | 0.0% | 0.0% | 0 | PASS |
 | `node_in_karnataka` | `medicines` | 7 | 100.0% | 0.0% | 0.0% | 0 | PASS |
 | `node_in_karnataka` | `weather_daily` | 6,920 | 100.0% | 0.0% | 0.0% | 0 | PASS |
-| `node_in_karnataka` | `stock_levels` | 1,03,322 | 0.0% | 0.0% | 100.0% | 0 | PASS |
+| `node_in_karnataka` | `stock_levels` | 1,03,324 | 0.0% | 0.0% | 100.0% | 0 | PASS |
 | `node_in_karnataka` | `bed_status` | 14,760 | 0.0% | 0.0% | 100.0% | 0 | PASS |
 | `node_in_karnataka` | `staff_attendance` | 14,760 | 0.0% | 0.0% | 100.0% | 0 | PASS |
-| `node_in_karnataka` | `patient_footfall` | 59,041 | 0.0% | 0.0% | 100.0% | 0 | PASS |
-| `node_in_karnataka` | `redistribution_plans` | 2 | 0.0% | 100.0% | 0.0% | 0 | PASS |
+| `node_in_karnataka` | `patient_footfall` | 59,042 | 0.0% | 0.0% | 100.0% | 0 | PASS |
+| `node_in_karnataka` | `redistribution_plans` | 3 | 0.0% | 100.0% | 0.0% | 0 | PASS |
 | `node_in_karnataka` | `alerts` | 2 | 0.0% | 100.0% | 0.0% | 0 | PASS |
 | `node_in_karnataka` | `briefings` | 1 | 0.0% | 100.0% | 0.0% | 0 | PASS |
 | `node_br_bahia` | `phcs` | 7 | 100.0% | 0.0% | 0.0% | 0 | PASS |
@@ -80,9 +80,9 @@
 | `weather_daily` | `precipitation_sum_mm` | 6,920 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
 | `weather_daily` | `temperature_max_c` | 6,920 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
 | `weather_daily` | `data_origin` | 6,920 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
-| `stock_levels` | `time` | 1,03,322 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
-| `stock_levels` | `phc_id` | 1,03,322 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
-| `stock_levels` | `medicine_id` | 1,03,322 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
-| `stock_levels` | `qty` | 1,03,322 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
-| `stock_levels` | `days_of_cover` | 1,03,322 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
-| `stock_levels` | `data_origin` | 1,03,322 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
+| `stock_levels` | `time` | 1,03,324 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
+| `stock_levels` | `phc_id` | 1,03,324 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
+| `stock_levels` | `medicine_id` | 1,03,324 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
+| `stock_levels` | `qty` | 1,03,324 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
+| `stock_levels` | `days_of_cover` | 1,03,324 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |
+| `stock_levels` | `data_origin` | 1,03,324 | 0 | 0.00% | 0.00% | PASS (0.00% Nulls) |

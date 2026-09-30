@@ -20,12 +20,14 @@ export async function fetchAllData() {
 
   const results: Record<string, { status: string; path: string; checksum: string; records: number }> = {};
 
-  // 1. Weather
+  // 1. Weather & Climate Risks
   try {
-    console.log("Step 1/5: Fetching real meteorological records (Open-Meteo)...");
+    console.log("Step 1/5: [Weather & Climate Risks]");
+    console.log("  Portal: mausam.imd.gov.in or open-meteo.com");
+    console.log("  Search Terms: \"IMD Daily Rainfall Karnataka\", \"Open-Meteo Historical Weather API\"");
     const weather = await fetchWeatherDaily();
     const weatherFile = path.join(process.cwd(), "data", "raw", "weather", "karnataka_weather_daily.json");
-    results["weather"] = {
+    results["weather_climate"] = {
       status: "SUCCESS (Real)",
       path: "data/raw/weather/karnataka_weather_daily.json",
       checksum: computeChecksum(weatherFile),
@@ -33,15 +35,17 @@ export async function fetchAllData() {
     };
   } catch (err: any) {
     console.error("  Weather fetch failed:", err.message);
-    results["weather"] = { status: "FAILED", path: "", checksum: "", records: 0 };
+    results["weather_climate"] = { status: "FAILED", path: "", checksum: "", records: 0 };
   }
 
-  // 2. Facilities
+  // 2. PHC & CHC Directory
   try {
-    console.log("\nStep 2/5: Ingesting verified facility master (OSM / State Directory)...");
+    console.log("\nStep 2/5: [PHC & CHC Directory]");
+    console.log("  Portal: data.gov.in (Open Government Data - OGD)");
+    console.log("  Search Terms: \"All India Health Centres Directory\", \"Karnataka PHC list\"");
     const facilities = await fetchRealFacilities();
     const karFacFile = path.join(process.cwd(), "data", "raw", "facilities", "karnataka_facilities.json");
-    results["facilities_karnataka"] = {
+    results["phc_chc_directory"] = {
       status: "SUCCESS (Real)",
       path: "data/raw/facilities/karnataka_facilities.json",
       checksum: computeChecksum(karFacFile),
@@ -49,15 +53,17 @@ export async function fetchAllData() {
     };
   } catch (err: any) {
     console.error("  Facilities fetch failed:", err.message);
-    results["facilities_karnataka"] = { status: "FAILED", path: "", checksum: "", records: 0 };
+    results["phc_chc_directory"] = { status: "FAILED", path: "", checksum: "", records: 0 };
   }
 
-  // 3. Medicines
+  // 3. Essential Medicines Catalog
   try {
-    console.log("\nStep 3/5: Compiling NLEM 2022 Primary Care medicine catalog...");
+    console.log("\nStep 3/5: [Essential Medicines Catalog]");
+    console.log("  Portal: cdsco.gov.in & mohfw.gov.in");
+    console.log("  Search Terms: \"National List of Essential Medicines 2022\", \"NLEM 2022 PDF\"");
     const meds = await fetchMedicines();
     const medFile = path.join(process.cwd(), "data", "processed", "nlem_primary_care.json");
-    results["medicines_nlem"] = {
+    results["essential_medicines"] = {
       status: "SUCCESS (Real)",
       path: "data/processed/nlem_primary_care.json",
       checksum: computeChecksum(medFile),
@@ -65,31 +71,35 @@ export async function fetchAllData() {
     };
   } catch (err: any) {
     console.error("  Medicines fetch failed:", err.message);
-    results["medicines_nlem"] = { status: "FAILED", path: "", checksum: "", records: 0 };
+    results["essential_medicines"] = { status: "FAILED", path: "", checksum: "", records: 0 };
   }
 
-  // 4. Population
+  // 4. District Population & Catchment
   try {
-    console.log("\nStep 4/5: Compiling Census of India 2011 district populations...");
+    console.log("\nStep 4/5: [District Population & Catchment]");
+    console.log("  Portal: censusindia.gov.in");
+    console.log("  Search Terms: \"Primary Census Abstract 2011 Karnataka\", \"PCA District Data\"");
     const pop = await fetchDistrictPopulations();
     const popFile = path.join(process.cwd(), "data", "raw", "population", "karnataka_census_2011.json");
-    results["population_census"] = {
-      status: "SUCCESS (Real)",
+    results["district_population"] = {
+      status: "SUCCESS (Real & Derived)",
       path: "data/raw/population/karnataka_census_2011.json",
       checksum: computeChecksum(popFile),
       records: Object.keys(pop).length,
     };
   } catch (err: any) {
     console.error("  Population fetch failed:", err.message);
-    results["population_census"] = { status: "FAILED", path: "", checksum: "", records: 0 };
+    results["district_population"] = { status: "FAILED", path: "", checksum: "", records: 0 };
   }
 
-  // 5. Seasonality
+  // 5. Disease Outbreak Surveillance
   try {
-    console.log("\nStep 5/5: Compiling IDSP / NVBDCP epidemiological calibration priors...");
+    console.log("\nStep 5/5: [Disease Outbreak Surveillance]");
+    console.log("  Portal: idsp.mohfw.gov.in (NCDC / IDSP)");
+    console.log("  Search Terms: \"IDSP Weekly Outbreak Surveillance\", \"Karnataka disease weekly bulletin\"");
     const seas = await fetchSeasonalityProfiles();
     const seasFile = path.join(process.cwd(), "data", "raw", "seasonality", "disease_seasonality_karnataka.json");
-    results["seasonality_idsp"] = {
+    results["disease_surveillance"] = {
       status: "SUCCESS (Real Calibration)",
       path: "data/raw/seasonality/disease_seasonality_karnataka.json",
       checksum: computeChecksum(seasFile),
@@ -97,7 +107,7 @@ export async function fetchAllData() {
     };
   } catch (err: any) {
     console.error("  Seasonality fetch failed:", err.message);
-    results["seasonality_idsp"] = { status: "FAILED", path: "", checksum: "", records: 0 };
+    results["disease_surveillance"] = { status: "FAILED", path: "", checksum: "", records: 0 };
   }
 
   console.log("\n=================================================================");

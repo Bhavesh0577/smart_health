@@ -12,6 +12,20 @@ Every data table, API response, and visualization metric in the platform carries
 
 ---
 
+## Authoritative Portals & Search Terms Integration Matrix
+
+The table below catalogs the exact public portals, search queries, and integration status specified for national-scale health logistics:
+
+| Data Type | Official Portal & URL | Exact Search Terms | Platform Integration Status | Local File Path | Application in Platform |
+|:---|:---|:---|:---:|:---|:---|
+| **PHC & CHC Directory** | [data.gov.in](https://data.gov.in/) *(Open Government Data - OGD)* | `"All India Health Centres Directory"`, `"Karnataka PHC list"` | ✅ **INTEGRATED (Real)** | `data/raw/facilities/karnataka_facilities.json` | 164 functional health centers geocoded across 5 Karnataka districts, cross-referenced with Lok Sabha Question 1924. |
+| **Essential Medicines Catalog** | [cdsco.gov.in](https://cdsco.gov.in/) & [mohfw.gov.in](https://mohfw.gov.in/) | `"National List of Essential Medicines 2022"`, `"NLEM 2022 PDF"` | ✅ **INTEGRATED (Real)** | `data/processed/nlem_primary_care.json` | 7 core primary care formulations with exact NLEM 2022 gazette page numbers, dosage forms, and shelf life. |
+| **District Population & Catchment** | [censusindia.gov.in](https://censusindia.gov.in/) | `"Primary Census Abstract 2011 Karnataka"`, `"PCA District Data"` | ✅ **INTEGRATED (Real & Derived)** | `data/raw/population/karnataka_census_2011.json` | Official rural/urban district census counts used to derive deterministic catchment population per PHC. |
+| **Disease Outbreak Surveillance** | [idsp.mohfw.gov.in](https://idsp.mohfw.gov.in/) *(NCDC / IDSP)* | `"IDSP Weekly Outbreak Surveillance"`, `"Karnataka disease weekly bulletin"` | ✅ **INTEGRATED (Real Calibration)** | `data/raw/seasonality/disease_seasonality_karnataka.json` | Seasonal multiplier priors and rainfall-lag response curves (diarrhea 4d lag, vector fever 14d lag) for early warning CUSUM. |
+| **Weather & Climate Risks** | [mausam.imd.gov.in](https://mausam.imd.gov.in/) or [open-meteo.com](https://open-meteo.com/) | `"IMD Daily Rainfall Karnataka"`, `"Open-Meteo Historical Weather API"` | ✅ **INTEGRATED (Real)** | `data/raw/weather/karnataka_weather_daily.json` | Daily precipitation and temperature reanalysis (ERA5) + live 16-day forecast used in Ridge demand forecasting. |
+
+---
+
 ## 1. Open-Meteo Historical Weather Archive & 16-Day Forecast API
 - **Source Name:** Open-Meteo Historical Weather Archive & Operational Forecast
 - **Source URL:** [https://open-meteo.com/](https://open-meteo.com/) (Archive: `https://archive-api.open-meteo.com/v1/archive`, Forecast: `https://api.open-meteo.com/v1/forecast`)

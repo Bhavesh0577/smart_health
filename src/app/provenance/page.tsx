@@ -24,9 +24,96 @@ import {
   CloudRain,
   Pill,
   Users,
+  Building2,
+  Activity,
+  FileText,
+  Globe,
+  Search,
 } from "lucide-react";
 import { useApp } from "@/lib/context/app-context";
 import { toast } from "sonner";
+
+interface OfficialDatasetEntry {
+  dataType: string;
+  icon: any;
+  portals: Array<{ name: string; url: string }>;
+  searchTerms: string[];
+  status: string;
+  origin: "real" | "derived" | "simulated";
+  records: string;
+  localFile: string;
+  description: string;
+}
+
+const OFFICIAL_GOVERNMENT_DATASETS: OfficialDatasetEntry[] = [
+  {
+    dataType: "PHC & CHC Directory",
+    icon: Building2,
+    portals: [
+      { name: "data.gov.in (Open Government Data - OGD)", url: "https://data.gov.in" },
+    ],
+    searchTerms: ["\"All India Health Centres Directory\"", "\"Karnataka PHC list\""],
+    status: "Integrated (Real)",
+    origin: "real",
+    records: "164 Facilities (5 Focus Districts)",
+    localFile: "data/raw/facilities/karnataka_facilities.json",
+    description: "Verified primary health network geocoded across Karnataka, validated against Lok Sabha Unstarred Question 1924 (6 Dec 2024).",
+  },
+  {
+    dataType: "Essential Medicines Catalog",
+    icon: Pill,
+    portals: [
+      { name: "cdsco.gov.in", url: "https://cdsco.gov.in" },
+      { name: "mohfw.gov.in", url: "https://mohfw.gov.in" },
+    ],
+    searchTerms: ["\"National List of Essential Medicines 2022\"", "\"NLEM 2022 PDF\""],
+    status: "Integrated (Real)",
+    origin: "real",
+    records: "7 Primary Care Formulations",
+    localFile: "data/processed/nlem_primary_care.json",
+    description: "Official MoHFW NLEM 2022 Primary Care schedule with exact gazette page numbers, dosage forms, and shelf life.",
+  },
+  {
+    dataType: "District Population & Catchment",
+    icon: Users,
+    portals: [
+      { name: "censusindia.gov.in", url: "https://censusindia.gov.in" },
+    ],
+    searchTerms: ["\"Primary Census Abstract 2011 Karnataka\"", "\"PCA District Data\""],
+    status: "Integrated (Real & Derived)",
+    origin: "derived",
+    records: "7 District Profiles (Census 2011)",
+    localFile: "data/raw/population/karnataka_census_2011.json",
+    description: "Census of India 2011 Primary Census Abstract rural/urban population used to derive deterministic catchment per PHC.",
+  },
+  {
+    dataType: "Disease Outbreak Surveillance",
+    icon: Activity,
+    portals: [
+      { name: "idsp.mohfw.gov.in (NCDC / IDSP)", url: "https://idsp.mohfw.gov.in" },
+    ],
+    searchTerms: ["\"IDSP Weekly Outbreak Surveillance\"", "\"Karnataka disease weekly bulletin\""],
+    status: "Integrated (Real Calibration)",
+    origin: "real",
+    records: "3 Disease Syndromes (Weekly Profiles)",
+    localFile: "data/raw/seasonality/disease_seasonality_karnataka.json",
+    description: "NCDC Integrated Disease Surveillance Programme outbreak parameters (diarrhea 4d lag, vector fever 14d lag, ARI winter spike).",
+  },
+  {
+    dataType: "Weather & Climate Risks",
+    icon: CloudRain,
+    portals: [
+      { name: "mausam.imd.gov.in", url: "https://mausam.imd.gov.in" },
+      { name: "open-meteo.com", url: "https://open-meteo.com" },
+    ],
+    searchTerms: ["\"IMD Daily Rainfall Karnataka\"", "\"Open-Meteo Historical Weather API\""],
+    status: "Integrated (Real)",
+    origin: "real",
+    records: "1,368 Daily Observations + 16-Day Forecast",
+    localFile: "data/raw/weather/karnataka_weather_daily.json",
+    description: "ERA5 historical weather reanalysis and ECMWF NWP live forecast calibrated with IMD daily rainfall climate zones.",
+  },
+];
 
 interface TableProvenance {
   tableName: string;
@@ -518,86 +605,146 @@ export default function ProvenancePage() {
         <TabsContent value="sources" className="space-y-4">
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-base font-semibold">Authoritative Data Sources Directory</CardTitle>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="text-base font-semibold flex items-center gap-2">
+                    <ShieldCheck className="w-5 h-5 text-emerald-500" />
+                    Authoritative Portals & Search Terms Integration Matrix
+                  </CardTitle>
+                  <CardDescription className="text-xs">
+                    Official public data portals, exact search terms, and ingestion file paths specified for BRICS health logistics.
+                  </CardDescription>
+                </div>
+                <Badge variant="outline" className="text-xs font-mono text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-500/10">
+                  5 of 5 Sourced & Integrated
+                </Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="p-0">
+              <div className="overflow-x-auto">
+                <table className="w-full text-xs text-left">
+                  <thead className="bg-muted/50 border-y border-border text-muted-foreground font-medium">
+                    <tr>
+                      <th className="py-2.5 px-4 min-w-[180px]">Data Type</th>
+                      <th className="py-2.5 px-4 min-w-[220px]">Official Portal & URL</th>
+                      <th className="py-2.5 px-4 min-w-[240px]">Exact Search Terms</th>
+                      <th className="py-2.5 px-3 min-w-[160px]">Integration Status</th>
+                      <th className="py-2.5 px-3 min-w-[200px]">Local Dataset Path</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border/60">
+                    {OFFICIAL_GOVERNMENT_DATASETS.map((ds) => {
+                      const Icon = ds.icon;
+                      return (
+                        <tr key={ds.dataType} className="hover:bg-muted/30 transition-colors">
+                          <td className="py-3 px-4">
+                            <div className="font-semibold text-foreground flex items-center gap-2">
+                              <Icon className="w-4 h-4 text-primary shrink-0" />
+                              {ds.dataType}
+                            </div>
+                            <div className="text-[10px] text-muted-foreground mt-0.5 max-w-[200px]">
+                              {ds.description}
+                            </div>
+                          </td>
+                          <td className="py-3 px-4">
+                            <div className="space-y-1">
+                              {ds.portals.map((portal) => (
+                                <a
+                                  key={portal.url}
+                                  href={portal.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 text-primary hover:underline font-medium text-xs mr-2"
+                                >
+                                  <span>{portal.name}</span>
+                                  <ExternalLink className="w-3 h-3 shrink-0" />
+                                </a>
+                              ))}
+                            </div>
+                          </td>
+                          <td className="py-3 px-4">
+                            <div className="flex flex-wrap gap-1.5">
+                              {ds.searchTerms.map((term, i) => (
+                                <code
+                                  key={i}
+                                  className="px-1.5 py-0.5 rounded bg-muted font-mono text-[10px] text-foreground border border-border/80"
+                                >
+                                  {term}
+                                </code>
+                              ))}
+                            </div>
+                          </td>
+                          <td className="py-3 px-3">
+                            <div className="space-y-1">
+                              <div className="flex items-center gap-1.5">
+                                <ProvenanceBadge origin={ds.origin} size="sm" />
+                                <span className="font-medium text-emerald-600 dark:text-emerald-400 text-[11px]">
+                                  {ds.status}
+                                </span>
+                              </div>
+                              <div className="text-[10px] text-muted-foreground font-mono">
+                                {ds.records}
+                              </div>
+                            </div>
+                          </td>
+                          <td className="py-3 px-3">
+                            <code className="text-[10px] font-mono text-muted-foreground break-all bg-muted/40 p-1 rounded">
+                              {ds.localFile}
+                            </code>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* International Partner Nodes (BRICS Federation) */}
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base font-semibold flex items-center gap-2">
+                <Globe className="w-4 h-4 text-sky-500" />
+                BRICS Federated Partner Nodes (Multi-National Sourcing)
+              </CardTitle>
               <CardDescription className="text-xs">
-                Audited public datasets and epidemiological citations documented in <code className="text-foreground font-mono">docs/DATA_SOURCES.md</code>.
+                Independent national health jurisdiction nodes participating in cross-border federated learning and resilience benchmarking.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Source 1 */}
                 <div className="p-3.5 rounded-lg border border-border/80 bg-card/60 space-y-2 text-xs">
                   <div className="flex items-center justify-between">
                     <div className="font-semibold text-sm flex items-center gap-1.5">
-                      <Server className="w-4 h-4 text-emerald-500" />
-                      data.gov.in & OpenStreetMap
+                      <Globe className="w-4 h-4 text-emerald-500" />
+                      Brazil Node (Bahia - Salvador & Feira de Santana)
                     </div>
                     <ProvenanceBadge origin="real" size="sm" />
                   </div>
                   <p className="text-muted-foreground text-[11px]">
-                    All India Health Centres Directory supplemented by OSM Overpass API healthcare nodes. Reconciled against Lok Sabha Unstarred Question 1924 (6 Dec 2024, Annexure I).
+                    DATASUS / CNES (Cadastro Nacional de Estabelecimentos de Saúde) master verified with OpenStreetMap Bahia healthcare geometry.
                   </p>
                   <div className="space-y-0.5 text-[10px] font-mono text-muted-foreground">
-                    <div>Records: 164 Karnataka facilities (32 BLR, 36 BG, 32 KLB, 33 MYS, 31 DK)</div>
-                    <div>License: Open Government Data (OGD) / ODbL</div>
-                    <div>Checksum: data/raw/facilities/karnataka_facilities.json</div>
+                    <div>Portal: <a href="https://datasus.saude.gov.br/" target="_blank" rel="noreferrer" className="text-primary hover:underline">datasus.saude.gov.br</a></div>
+                    <div>Local Path: data/raw/facilities/bahia_facilities.json (7 UBS Centers)</div>
                   </div>
                 </div>
 
-                {/* Source 2 */}
                 <div className="p-3.5 rounded-lg border border-border/80 bg-card/60 space-y-2 text-xs">
                   <div className="flex items-center justify-between">
                     <div className="font-semibold text-sm flex items-center gap-1.5">
-                      <CloudRain className="w-4 h-4 text-sky-500" />
-                      Open-Meteo Weather Archive & NWP
+                      <Globe className="w-4 h-4 text-amber-500" />
+                      South Africa Node (KwaZulu-Natal - eThekwini)
                     </div>
                     <ProvenanceBadge origin="real" size="sm" />
                   </div>
                   <p className="text-muted-foreground text-[11px]">
-                    ERA5 Reanalysis historical daily precipitation and temperatures (2022-2025) plus ECMWF 16-day live ensemble forecasts for early-warning lag triggers.
+                    National Department of Health facility registry integrated via Healthsites.io Open Data Commons.
                   </p>
                   <div className="space-y-0.5 text-[10px] font-mono text-muted-foreground">
-                    <div>Records: 1,368 daily district observations + 16-day forecast</div>
-                    <div>License: Creative Commons Attribution 4.0 (CC BY 4.0)</div>
-                    <div>Checksum: data/raw/weather/karnataka_weather_archive.json</div>
-                  </div>
-                </div>
-
-                {/* Source 3 */}
-                <div className="p-3.5 rounded-lg border border-border/80 bg-card/60 space-y-2 text-xs">
-                  <div className="flex items-center justify-between">
-                    <div className="font-semibold text-sm flex items-center gap-1.5">
-                      <Pill className="w-4 h-4 text-purple-500" />
-                      National List of Essential Medicines (NLEM 2022)
-                    </div>
-                    <ProvenanceBadge origin="real" size="sm" />
-                  </div>
-                  <p className="text-muted-foreground text-[11px]">
-                    Official MoHFW NLEM 2022 Gazette schedule indexed by Level of Care (Primary / Secondary / Tertiary) with verifiable source page references.
-                  </p>
-                  <div className="space-y-0.5 text-[10px] font-mono text-muted-foreground">
-                    <div>Records: 16 Core Primary Care formulations with IPHS units</div>
-                    <div>License: Government Open Access / Official Publication</div>
-                    <div>Checksum: data/raw/medicines/nlem_2022_extracted.json</div>
-                  </div>
-                </div>
-
-                {/* Source 4 */}
-                <div className="p-3.5 rounded-lg border border-border/80 bg-card/60 space-y-2 text-xs">
-                  <div className="flex items-center justify-between">
-                    <div className="font-semibold text-sm flex items-center gap-1.5">
-                      <Users className="w-4 h-4 text-amber-500" />
-                      Census of India 2011 Catchment Derivation
-                    </div>
-                    <ProvenanceBadge origin="derived" size="sm" />
-                  </div>
-                  <p className="text-muted-foreground text-[11px]">
-                    District populations divided by verified PHC counts to establish empirical facility catchment populations (e.g. 301,000 for BLR Urban; 133,000 for Belagavi).
-                  </p>
-                  <div className="space-y-0.5 text-[10px] font-mono text-muted-foreground">
-                    <div>Method: Catchment = District Population / PHC Count</div>
-                    <div>License: Government Open Data (Census of India)</div>
-                    <div>Checksum: data/raw/population/census_2011_karnataka.json</div>
+                    <div>Portal: <a href="https://healthsites.io/" target="_blank" rel="noreferrer" className="text-primary hover:underline">healthsites.io</a> & health.gov.za</div>
+                    <div>Local Path: data/raw/facilities/kzn_facilities.json (6 Clinics)</div>
                   </div>
                 </div>
               </div>

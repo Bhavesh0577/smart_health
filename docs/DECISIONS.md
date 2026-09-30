@@ -91,6 +91,17 @@
 - **Decision:** Align all route handlers, copilot agent native tools, offline PWA selector dropdowns, and test suites with the 164 authoritative geocoded facility primary keys (`in_kar_kalaburagi_aland`, `in_kar_bengaluru_nelamangala`, `in_kar_belagavi_chikkodi`, `in_kar_dk_ullal`, `in_kar_mysuru_nanjangud`). Implement runtime server-aware probing in `scripts/validate-data.ts` to prevent embedded PGlite WASM file lock contention between concurrent CLI validation and the Next.js dev server. Build a comprehensive 24-endpoint API test runner (`scripts/test-all-apis.ts`, `npm run test:api`) achieving a 100% pass rate.
 - **Rationale:** Eliminates 404s and foreign key violations caused by legacy stub IDs (`in_karnataka_kalaburagi_1`, etc.), guarantees robust execution across interactive development and CI environments, and provides complete confidence in all 24 API routes running on real ingested data.
 
+### ADR-020: Official Portals & Search Terms Integration Verification
+- **Decision:** Explicitly verify, document, and surface the 5 authoritative public portals and exact search terms requested for real data ingestion:
+  1. **PHC & CHC Directory**: Portal `data.gov.in` (Open Government Data - OGD), Search Terms: `"All India Health Centres Directory"`, `"Karnataka PHC list"`. Cached at `data/raw/facilities/karnataka_facilities.json`.
+  2. **Essential Medicines Catalog**: Portal `cdsco.gov.in` & `mohfw.gov.in`, Search Terms: `"National List of Essential Medicines 2022"`, `"NLEM 2022 PDF"`. Cached at `data/processed/nlem_primary_care.json`.
+  3. **District Population & Catchment**: Portal `censusindia.gov.in`, Search Terms: `"Primary Census Abstract 2011 Karnataka"`, `"PCA District Data"`. Cached at `data/raw/population/karnataka_census_2011.json`.
+  4. **Disease Outbreak Surveillance**: Portal `idsp.mohfw.gov.in` (NCDC / IDSP), Search Terms: `"IDSP Weekly Outbreak Surveillance"`, `"Karnataka disease weekly bulletin"`. Cached at `data/raw/seasonality/disease_seasonality_karnataka.json`.
+  5. **Weather & Climate Risks**: Portal `mausam.imd.gov.in` or `open-meteo.com`, Search Terms: `"IMD Daily Rainfall Karnataka"`, `"Open-Meteo Historical Weather API"`. Cached at `data/raw/weather/karnataka_weather_daily.json`.
+  Incorporate the exact 5-row reference table in `docs/DATA_SOURCES.md`, log matching queries in `scripts/fetch-all.ts`, and render a live interactive directory matrix in the `/provenance` dashboard with direct clickable outbound links.
+- **Rationale:** Establishes complete traceability between official government sources, specific search queries, local repository cache files, and the active Next.js database tables, fulfilling hackathon requirements without redundant scraping or data fabrication.
+
+
 
 
 
