@@ -35,5 +35,23 @@ services:
       timescaledb:
         condition: service_healthy
 
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: phc_web
+    restart: always
+    environment:
+      - PORT=8080
+      - DATABASE_URL=postgresql://postgres:postgrespassword@timescaledb:5432/smart_health
+      - ML_SERVICE_URL=http://ml-service:8000
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=${GEMINI_MODEL:-gemini-2.5-flash}
+    ports:
+      - "3000:8080"
+    depends_on:
+      - timescaledb
+      - ml-service
+
 volumes:
   timescale_data:

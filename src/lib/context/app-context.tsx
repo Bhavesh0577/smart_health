@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 export type UserRole = "state_officer" | "district_officer" | "phc_staff";
-export type NodeId = "node_in_karnataka" | "node_br_bahia" | "node_za_kzn";
+export type NodeId = "node_in_karnataka";
 
 interface AppContextType {
   role: UserRole;
@@ -41,16 +41,13 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const savedRole = getCookie("phc_role") as UserRole | null;
-    const savedNode = getCookie("phc_node") as NodeId | null;
     const savedDistrict = getCookie("phc_district");
     const savedEmergency = getCookie("phc_emergency");
 
     if (savedRole && ["state_officer", "district_officer", "phc_staff"].includes(savedRole)) {
       setRoleState(savedRole);
     }
-    if (savedNode && ["node_in_karnataka", "node_br_bahia", "node_za_kzn"].includes(savedNode)) {
-      setSelectedNodeState(savedNode);
-    }
+    setSelectedNodeState("node_in_karnataka");
     if (savedDistrict) {
       setSelectedDistrictState(savedDistrict);
     }

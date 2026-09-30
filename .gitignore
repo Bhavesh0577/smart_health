@@ -44,3 +44,7 @@ drizzle/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# large raw excel files (exceeding git limits)
+realdatasets/*.xlsx
+realdatasets/*.xls

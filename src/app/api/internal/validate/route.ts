@@ -28,7 +28,7 @@ export async function GET() {
       return [];
     };
 
-    const schemas = ["node_in_karnataka", "node_br_bahia", "node_za_kzn"];
+    const schemas = ["node_in_karnataka"];
     const tables = [
       "phcs",
       "medicines",
