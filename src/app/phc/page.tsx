@@ -58,8 +58,8 @@ export default function PhcFieldStaffPage() {
   const [syncing, setSyncing] = useState(false);
 
   // Selected Facility context
-  const [phcId, setPhcId] = useState("in_karnataka_kalaburagi_1");
-  const [phcName, setPhcName] = useState("PHC Aland (Kalaburagi)");
+  const [phcId, setPhcId] = useState("in_kar_kalaburagi_aland");
+  const [phcName, setPhcName] = useState("Aland 24x7 Taluk PHC (Kalaburagi)");
 
   // Active Form Tab
   const [activeTab, setActiveTab] = useState<"stock" | "beds" | "staff" | "footfall">("stock");
@@ -239,12 +239,12 @@ export default function PhcFieldStaffPage() {
                 }}
                 className="bg-background border border-border/80 rounded-md px-2 py-1 text-xs text-foreground focus:outline-none"
               >
-                <option value="in_karnataka_kalaburagi_1">PHC Aland (Kalaburagi)</option>
-                <option value="in_karnataka_kalaburagi_2">PHC Sedam (Kalaburagi)</option>
-                <option value="in_karnataka_dakshina_kannada_1">PHC Ullal (Dakshina Kannada)</option>
-                <option value="in_karnataka_bengaluru_urban_1">PHC Nelamangala (Bengaluru Urban)</option>
-                <option value="in_karnataka_belagavi_1">PHC Chikkodi (Belagavi)</option>
-                <option value="in_karnataka_mysuru_1">PHC Nanjangud (Mysuru)</option>
+                <option value="in_kar_kalaburagi_aland">PHC Aland (Kalaburagi)</option>
+                <option value="in_kar_kalaburagi_sedam">CHC Sedam (Kalaburagi)</option>
+                <option value="in_kar_dk_ullal">CHC Ullal (Dakshina Kannada)</option>
+                <option value="in_kar_bengaluru_nelamangala">PHC Nelamangala (Bengaluru Urban)</option>
+                <option value="in_kar_belagavi_chikkodi">CHC Chikkodi (Belagavi)</option>
+                <option value="in_kar_mysuru_nanjangud">THC Nanjangud (Mysuru)</option>
               </select>
             </div>
 
@@ -651,7 +651,7 @@ export default function PhcFieldStaffPage() {
                       {e.type}
                     </TableCell>
                     <TableCell className="font-mono text-[10px] text-muted-foreground">
-                      {e.phcId.replace("in_karnataka_", "")}
+                      {e.phcId.replace("in_kar_", "")}
                     </TableCell>
                     <TableCell className="font-mono text-[10px] max-w-[200px] truncate text-muted-foreground">
                       {JSON.stringify(e.payload)}

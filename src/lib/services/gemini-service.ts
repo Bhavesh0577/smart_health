@@ -15,7 +15,7 @@ export const GEMINI_TOOLS = [
         parameters: {
           type: Type.OBJECT,
           properties: {
-            phcId: { type: Type.STRING, description: "ID of the PHC (e.g. in_karnataka_kalaburagi_1)" },
+            phcId: { type: Type.STRING, description: "ID of the PHC (e.g. in_kar_kalaburagi_aland, in_kar_bengaluru_nelamangala)" },
             medicineId: { type: Type.STRING, description: "ID of the medicine (e.g. MED_PARA, MED_ORS, MED_AL)" },
             daysAhead: { type: Type.INTEGER, description: "Number of forecast days (default 14)" },
           },
@@ -423,8 +423,8 @@ All transfers have been prioritized according to shelf-life constraints (<45 day
   }
 
   if (lower.includes("forecast") || lower.includes("demand") || lower.includes("predict")) {
-    const result = await executeTool("get_forecast", { phcId: "in_karnataka_kalaburagi_1", medicineId: "MED_PARA" }, node);
-    toolCallsExecuted.push({ toolName: "get_forecast", args: { phcId: "in_karnataka_kalaburagi_1", medicineId: "MED_PARA" }, result });
+    const result = await executeTool("get_forecast", { phcId: "in_kar_kalaburagi_aland", medicineId: "MED_PARA" }, node);
+    toolCallsExecuted.push({ toolName: "get_forecast", args: { phcId: "in_kar_kalaburagi_aland", medicineId: "MED_PARA" }, result });
 
     const text = `### 📈 Parametric Demand Forecast (14-Day Horizon)
 

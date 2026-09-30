@@ -7,7 +7,7 @@ import { z } from "zod";
 const visionSchema = z.object({
   imageBase64: z.string().min(10),
   mimeType: z.string().optional().default("image/jpeg"),
-  phcId: z.string().optional().default("in_karnataka_kalaburagi_1"),
+  phcId: z.string().optional().default("in_kar_kalaburagi_aland"),
   node: z.string().optional().default("node_in_karnataka"),
   confirmSave: z.boolean().optional().default(false),
   itemsToSave: z.array(z.object({

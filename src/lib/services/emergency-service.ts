@@ -111,7 +111,7 @@ export async function injectEmergencyOutbreakCluster(node = "node_in_karnataka")
   const emergencyAlerts = [
     {
       id: `alt_emg_kalaburagi_cluster_${Date.now()}_1`,
-      phcId: fallbackCluster[0]?.id || "in_karnataka_kalaburagi_1",
+      phcId: fallbackCluster[0]?.id || "in_kar_kalaburagi_aland",
       district: fallbackCluster[0]?.district || "Kalaburagi",
       severity: "critical" as const,
       alertType: "epidemic_spike" as const,
@@ -121,7 +121,7 @@ export async function injectEmergencyOutbreakCluster(node = "node_in_karnataka")
     },
     {
       id: `alt_emg_kalaburagi_cluster_${Date.now()}_2`,
-      phcId: fallbackCluster[0]?.id || "in_karnataka_kalaburagi_1",
+      phcId: fallbackCluster[0]?.id || "in_kar_kalaburagi_aland",
       district: fallbackCluster[0]?.district || "Kalaburagi",
       severity: "critical" as const,
       alertType: "stockout_risk" as const,
@@ -171,9 +171,9 @@ export async function injectEmergencyOutbreakCluster(node = "node_in_karnataka")
   const donorPhc = phcs.find((p: any) => p.district === "Belagavi" || p.name.includes("Gokak")) || phcs[10];
   const emergencyMoves = [
     {
-      fromPhcId: donorPhc?.id || "in_karnataka_belagavi_1",
+      fromPhcId: donorPhc?.id || "in_kar_belagavi_chikkodi",
       fromPhcName: donorPhc?.name || "PHC Gokak (Belagavi Depot)",
-      toPhcId: fallbackCluster[0]?.id || "in_karnataka_kalaburagi_1",
+      toPhcId: fallbackCluster[0]?.id || "in_kar_kalaburagi_aland",
       toPhcName: fallbackCluster[0]?.name || "PHC Aland",
       medicineId: "MED_PARA",
       medicineName: "Paracetamol 500mg",
@@ -186,7 +186,7 @@ export async function injectEmergencyOutbreakCluster(node = "node_in_karnataka")
       reason: "Emergency outbreak containment transfer: high-priority cross-district replenishment from Belagavi buffer stock.",
     },
     {
-      fromPhcId: donorPhc?.id || "in_karnataka_belagavi_1",
+      fromPhcId: donorPhc?.id || "in_kar_belagavi_chikkodi",
       fromPhcName: donorPhc?.name || "PHC Gokak (Belagavi Depot)",
       toPhcId: fallbackCluster[1]?.id || fallbackCluster[0]?.id,
       toPhcName: fallbackCluster[1]?.name || "PHC Sedam",
@@ -201,9 +201,9 @@ export async function injectEmergencyOutbreakCluster(node = "node_in_karnataka")
       reason: "Acute diarrheal surge relief: moves near-expiry surplus ORS to rapidly prevent dehydration mortality.",
     },
     {
-      fromPhcId: donorPhc?.id || "in_karnataka_belagavi_1",
+      fromPhcId: donorPhc?.id || "in_kar_belagavi_chikkodi",
       fromPhcName: donorPhc?.name || "PHC Gokak (Belagavi Depot)",
-      toPhcId: fallbackCluster[0]?.id || "in_karnataka_kalaburagi_1",
+      toPhcId: fallbackCluster[0]?.id || "in_kar_kalaburagi_aland",
       toPhcName: fallbackCluster[0]?.name || "PHC Aland",
       medicineId: "MED_AL",
       medicineName: "Artemether-Lumefantrine 80/480mg",

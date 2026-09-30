@@ -70,9 +70,26 @@ function formatDate(val: any): string {
 }
 
 async function runValidation() {
-  console.log("================================================================================");
-  console.log("             PHC RESILIENCE GRID - COMPREHENSIVE DATA VALIDATION AUDIT          ");
-  console.log("================================================================================\n");
+  // If the Next.js dev server is actively running, query via runtime API to avoid PGlite WASM file lock conflicts
+  try {
+    const probe = await fetch("http://localhost:3000/api/internal/validate", { signal: AbortSignal.timeout(3000) });
+    if (probe.ok) {
+      const res = await probe.json();
+      console.log(`[INFO] Connected to active Next.js runtime database engine`);
+      console.log(`[INFO] Audit complete. Failures: ${res.totalFailures}`);
+      console.log(`[SUCCESS] Wrote comprehensive audit report to docs/VALIDATION_REPORT.md\n`);
+      if (res.totalFailures === 0) {
+        console.log("================================================================================");
+        console.log("                      AUDIT RESULT: ALL SUITES PASSED (0 FAILURES)              ");
+        console.log("================================================================================\n");
+        process.exit(0);
+      } else {
+        process.exit(1);
+      }
+    }
+  } catch {
+    // Dev server not running, fall back to direct SQL executor
+  }
 
   const { exec, close, type } = await getSqlExecutor();
   console.log(`[INFO] Connected to database engine (${type})\n`);

@@ -8,7 +8,7 @@ import { z } from "zod";
 const voiceSchema = z.object({
   transcript: z.string().min(1),
   language: z.enum(["en", "hi", "kn"]).default("en"),
-  phcId: z.string().optional().default("in_karnataka_kalaburagi_1"),
+  phcId: z.string().optional().default("in_kar_kalaburagi_aland"),
   node: z.string().optional().default("node_in_karnataka"),
   confirmSave: z.boolean().optional().default(false),
   updatesToSave: z.array(z.object({

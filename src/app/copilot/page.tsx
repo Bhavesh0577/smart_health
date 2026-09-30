@@ -168,7 +168,7 @@ I am your server-side AI operational commander, powered by Gemini with native fu
         body: JSON.stringify({
           imageBase64: selectedImage,
           node: selectedNode,
-          phcId: "in_karnataka_kalaburagi_1",
+          phcId: "in_kar_kalaburagi_aland",
         }),
       });
       const data = await res.json();
@@ -199,7 +199,7 @@ I am your server-side AI operational commander, powered by Gemini with native fu
         body: JSON.stringify({
           imageBase64: selectedImage,
           node: selectedNode,
-          phcId: "in_karnataka_kalaburagi_1",
+          phcId: "in_kar_kalaburagi_aland",
           confirmSave: true,
           itemsToSave: visionItems.map((i) => ({
             medicineCode: i.medicineCode || "MED_PARA",
@@ -296,7 +296,7 @@ I am your server-side AI operational commander, powered by Gemini with native fu
           transcript: voiceTranscript,
           language: voiceLang,
           node: selectedNode,
-          phcId: "in_karnataka_kalaburagi_1",
+          phcId: "in_kar_kalaburagi_aland",
         }),
       });
       const data = await res.json();
@@ -327,7 +327,7 @@ I am your server-side AI operational commander, powered by Gemini with native fu
           transcript: voiceTranscript,
           language: voiceLang,
           node: selectedNode,
-          phcId: "in_karnataka_kalaburagi_1",
+          phcId: "in_kar_kalaburagi_aland",
           confirmSave: true,
           updatesToSave: parsedUpdates,
         }),

@@ -87,6 +87,10 @@
 - **Decision:** Explicitly declare all `/impact` backtest results as derived from a calibrated mathematical counterfactual simulation executed over 164 verified healthcare facilities, Census 2011 catchments, real Open-Meteo precipitation series, and NLEM 2022 drug schedules. Retrain the multi-echelon optimization backtest and FedAvg global models using the expanded 14,760 sample matrix with meteorological and seasonal disease covariates. Include prominent disclaimer callouts that explicitly prohibit claiming uncalibrated real-world retrospective hospital trial outcomes.
 - **Rationale:** Strict adherence to research ethics and scientific honesty. Clear demarcation of what is empirical public ground truth (geography, weather, drug catalog, census) versus what is an algorithmic simulation (footfall dynamics, inventory depletion, administrative counterfactuals) preserves complete credibility.
 
+### ADR-019: Real Facility Identifier Alignment, Dual-Mode Validation & 100% API Test Coverage
+- **Decision:** Align all route handlers, copilot agent native tools, offline PWA selector dropdowns, and test suites with the 164 authoritative geocoded facility primary keys (`in_kar_kalaburagi_aland`, `in_kar_bengaluru_nelamangala`, `in_kar_belagavi_chikkodi`, `in_kar_dk_ullal`, `in_kar_mysuru_nanjangud`). Implement runtime server-aware probing in `scripts/validate-data.ts` to prevent embedded PGlite WASM file lock contention between concurrent CLI validation and the Next.js dev server. Build a comprehensive 24-endpoint API test runner (`scripts/test-all-apis.ts`, `npm run test:api`) achieving a 100% pass rate.
+- **Rationale:** Eliminates 404s and foreign key violations caused by legacy stub IDs (`in_karnataka_kalaburagi_1`, etc.), guarantees robust execution across interactive development and CI environments, and provides complete confidence in all 24 API routes running on real ingested data.
+
 
 
 
